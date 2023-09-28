@@ -1,0 +1,52 @@
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background: white;
+    height: 99%;
+    border: white solid 5px;
+}
+.player1 {
+    background-color: rgb(15, 74, 157);
+    height: 100%;
+    width: 49.5%;
+    border-right: white solid 5px;
+    display: inline-block;
+}
+
+.player2 {
+    background-color: rgb(15, 74, 157);
+    height: 100%;
+    width: 49.5%;
+    float: right;
+    border-left: white solid 5px;
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 2%;
+    font-size: 5em;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 7%;
+    font-size: 2.5em;
+}
+
+#score {
+    position: relative;
+    top: 25%;
+}
