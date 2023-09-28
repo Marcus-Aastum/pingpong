@@ -42,6 +42,7 @@ function clearPlayers(){
     player2.score = 0
     localStorage.setItem("player1", JSON.stringify(player2))
     localStorage.setItem("player2", JSON.stringify(player2))
+    window.location.href="../html/newplayer.html"
 }
 console.log(player1, player2)
 // addPoint(0)
