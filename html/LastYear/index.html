@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tornument viewer</title>
+</head>
+<body>
+
+
+
+
+    <div id="win-div">
+
+        <div id="winnerdiv">
+            <h1 id="winner">test</h1>
+
+        </div>
+        
+        
+<div id="wallpaper">
+    <h1 id = "p1score">0</h1>
+    <h1 id = "p2score">0</h1>
+
+ 
+    <h1 id = "p1wins">0</h1>
+    <h1 id = "p2wins">0</h1>
+ 
+
+<div id="buttonid">
+    <button onclick="addp1()" id="addp1">+1 T1</button>
+    <button onclick="reset()" id="reset">Reset</button>
+    <button onclick="addp2()" id="addp2">+1 T2</button>
+</div>
+
+
+
+
+
+<!-- input text without border and hint text-->
+<input type="text" id="p1name" placeholder="Team 1" style="border: none;">
+<input type="text" id="p2name" placeholder="Team 2" style="border: none;">
+
+
+<label for="maxinput" id="maxscorelabel">Max Score:</label>
+<input type="number" id="maxinput"  placeholder="Score" style="border: none;">
+
+
+<input type="number" id="maxwins"  placeholder="Wins" style="border: none;">
+<label for="maxwins" id="maxwinlabel">Max Wins:</label>
+
+<style>
+
+    
+
+    body{
+        
+        color: #ffffff;
+        font-family: sans-serif;
+    }
+
+    h1{
+        font-size: 100px;
+        text-align: center;
+    }
+
+    button{
+        font-size: 50px;
+        text-align: center;
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    input{
+        font-size: 50px;
+        text-align: center;
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    #p1score{
+        position: absolute;
+        top: 3%;
+        left: 20%;
+        font-size: 5000%;
+        text-align: center;
+    }
+    #p2score{
+        position: absolute;
+        top: 3%;
+        right: 20%;
+        font-size: 5000%;
+        text-align: center;
+        
+    }
+    #p1name{
+        position: absolute;
+        float: left;
+        top: 10%;
+        left: 6.6%;
+        font-size: 600%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+    }
+    #p2name{
+        position: absolute;
+        float: right;
+        top: 10%;
+        right: 6.6%;
+        font-size: 600%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+    }
+    #buttonid{
+        position: absolute;
+        bottom: 1%;
+        left: 50%;
+        overflow: visible;
+        transform: translate(-50%, -50%);
+    }
+    #wallpaper{
+        top: 0%;
+        left: 0%;
+        position: absolute;
+    margin:0;
+    box-sizing:border-box;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(-45deg, rgb(33, 27, 224) 49%, rgba(0, 0, 0,85) 50%, rgb(255, 116, 2) 48%);
+}
+
+#p1wins{
+    position: absolute;
+    top: -9%;
+    left: 7%;
+    font-size: 2000%;
+}
+#p2wins{
+    position: absolute;
+    top: -9%;
+    right: 7%;
+    font-size: 2000%;
+}
+
+#winnerdiv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: 2000%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 0px solid white;
+    
+
+}
+
+#maxscorelabel{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    left: 1%;
+    bottom: 2%;
+    width: 300px;
+    font-size: 50px;
+    
+}
+#maxinput{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    left: 6%;
+    bottom: 1.8%;
+    width: 300px;
+    
+}
+
+#maxwinlabel{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    right: 5.5%;
+    bottom: 2%;
+    width: 300px;
+    font-size: 50px;
+}
+#maxwins{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    right: 1%;
+    bottom: 1.8%;
+    width: 300px;
+    
+}
+
+
+
+#addp1{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 0px solid white;
+
+}
+#addp1:hover{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;   
+}
+#addp1:active{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    color: white;   
+}
+
+#addp2{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 0px solid white;
+}
+#addp2:hover{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+#addp2:active{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    color: white;   
+}
+#reset{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 0px solid white;
+}
+#reset:hover{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+#reset:active{
+    font-size: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    color: white;   
+}
+#win-div{
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    background-color: #000000;
+}
+
+
+
+
+
+</style>
+
+
+    <script>
+
+    var p2wins = 0;
+    var p1wins = 0;
+    var doubleclick = 0;
+    var p1score = 0;
+    var p2score = 0;
+
+
+    function addp1(){
+        console.log("p1score button pressed");
+//adds 1 point to p1score with a button
+        p1score++;
+        document.getElementById("p1score").innerHTML = p1score;
+        winner();
+        maxscore();
+    }
+
+
+    function addp2(){
+        console.log("p2score button pressed");
+//adds 1 point to p1score with a button
+        p2score++;
+        document.getElementById("p2score").innerHTML = p2score;
+        winner();
+        maxscore();
+    }
+
+    function reset (){
+        //resets the score of p1score and p2score to 0
+        p1score = 0;
+        p2score = 0;
+        document.getElementById("p1score").innerHTML = p1score;
+        document.getElementById("p2score").innerHTML = p2score; 
+    }
+
+    function maxscore(){
+        //sets the max score to the input
+        var maxinput = document.getElementById("maxinput").value;
+        var maxwins = document.getElementById("maxwins").value;
+        document.getElementById("maxinput").innerHTML = maxinput;
+
+        if (maxwins == 0){
+            alert("please enter a Max win score");
+            location.reload();
+        }
+
+        else if (p1score >= maxinput && p1score > p2score+1){
+
+            //adds 1 to p1wins
+            p1wins++;
+            document.getElementById("p1wins").innerHTML = p1wins;
+            reset();
+            winner()
+            
+
+
+
+
+            
+            
+        }
+        else if (p2score >= maxinput && p2score > p1score+1){
+
+            //adds 1 to p2wins
+            p2wins++;
+            document.getElementById("p2wins").innerHTML = p2wins;
+            reset();
+            winner()
+            
+
+            
+
+
+        }
+        
+
+    }
+
+
+    function winner(){
+        //checks if the max win is reached
+        var maxinput = document.getElementById("maxinput").value;
+        var maxwins = document.getElementById("maxwins").value;
+
+        if (0 == maxinput){
+            alert("Please enter a max score");
+            location.reload();
+        }
+            
+            else if (p1wins >= maxwins){
+
+
+            //adds display: none to wallpapper
+            document.getElementById("wallpaper").style.display = "none";
+
+            //adds orange background to win-div
+            document.getElementById("win-div").style.backgroundColor = "rgb(255, 116, 2)";
+
+            //show winnerdiv
+            document.getElementById("winnerdiv").style.display = "block";
+
+            //adds text to winnerdiv
+            
+            document.getElementById("winnerdiv").innerHTML = document.getElementById("p1name").value + " wins!";
+
+            //adds onclick to winnerdiv
+            document.getElementById("win-div").onclick = doubleclickend;
+            }
+            else if (p2wins >= maxwins){
+
+            document.getElementById("wallpaper").style.display = "none";
+
+            //adds blue background to win-div
+            document.getElementById("win-div").style.backgroundColor = "rgb(33, 27, 224)";
+
+            //show winnerdiv
+            document.getElementById("winnerdiv").style.display = "block";
+
+            //adds text to winnerdiv
+            document.getElementById("winnerdiv").innerHTML = document.getElementById("p2name").value + " wins!";
+
+            document.getElementById("win-div").onclick = doubleclickend;
+
+            }
+
+        
+    }
+
+    function doubleclickend(){
+        console.log("doubleclickend");
+        doubleclick++;
+        if (doubleclick == 2){
+            resetondivclick();
+            doubleclick = 0;
+            document.getElementById("win-div").onclick = emptyFunction;
+        }
+    }
+
+    function emptyFunction(){
+        console.log("emptyFunction");
+    }
+
+
+    //on div click reset
+    function resetondivclick(){
+        console.log("resetondivclick");
+        reset();
+        // document.getElementById("wallpaper").style.display = "block";
+        // document.getElementById("winnerdiv").style.display = "none";
+        // document.getElementById("win-div").style.backgroundColor = "rgb(0, 0, 0)";
+        // // remove onclick from win-div
+        // document.getElementById("win-div").removeAttribute("onclick");
+
+        //refreshes the page
+        location.reload();
+    }
+
+
+    </script>
+    
+</body>
+</html>
+

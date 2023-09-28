@@ -16,7 +16,6 @@ body {
     background: white;
     height: 99%;
     border: white solid 5px;
-    text-align: center;
 }
 .player1 {
     background-color: rgb(15, 74, 157);
@@ -87,4 +86,19 @@ h2 {
     font-size: 2.5vh;
     cursor: pointer;
     box-shadow: 5px 5px 5px grey;
+}
+
+input {
+    color:#333;
+}
+
+#tilSpill{
+    color: #333;
+}
+
+#alert {
+    color: #333;
+    font-size: 2vh;
+    text-align: left;
+    padding: 0;
 }

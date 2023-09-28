@@ -98,3 +98,12 @@ function switchSides(){
     switchedSides = !switchedSides
     updateScore()
 }
+
+function tilSpill(){
+    if (player1.id === "" || player2.id === ""){
+        document.getElementById("alert").innerHTML = "Du må legge til minst 2 spillere før du kan starte spillet"}
+    
+    else{ 
+        window.location.href="../html/index.html"
+    }
+}
