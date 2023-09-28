@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nye spillere</title>
+    <link rel="stylesheet" href="../CSS/main.css">
 </head>
 <body>
     <form name="newPlayer" action="" method="get">
@@ -11,7 +12,8 @@
         <input type="text" name="playerNameInput" id="" placeholder="Navn på spiller">
         <input type="button" name="" value="Lag Spiller" onclick="createNewPlayer(this.form)">
     </form>
-    <button onclick="window.location.href ='./index.html'">Til spill</button>
+    <button id="tilSpill" onclick="tilSpill()">Start spill</button>
+    <h1 id="alert"></h1>
     <script src="../JS/script.js"></script>
 </body>
 </html>
