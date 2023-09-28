@@ -16,13 +16,14 @@ body {
     background: white;
     height: 99%;
     border: white solid 5px;
+    text-align: center;
 }
 .player1 {
     background-color: rgb(15, 74, 157);
     height: 100%;
     width: 49.5%;
+    float: left;
     border-right: white solid 5px;
-    display: inline-block;
 }
 
 .player2 {
@@ -31,7 +32,6 @@ body {
     width: 49.5%;
     float: right;
     border-left: white solid 5px;
-    display: inline-block;
 }
 
 h1 {
@@ -49,4 +49,42 @@ h2 {
 .score {
     position: relative;
     top: 25%;
+}
+
+.buttonsDiv {
+    margin: auto;
+    height: 10%;
+    position: absolute;
+    background-color:rgba(255,255,255,.8);
+    border-radius: 10px;
+    width: 25%;
+    margin-top: 80vh;
+    text-align: center;
+    left: 37%;
+}
+
+#button1{
+    color: black;
+    margin-top: 2.5vh;
+    margin-left: 2%;
+    background-color: #ADD8E6;
+    border-radius: 50px 0px 0px 50px ;
+    border: none;
+    padding: 3%;
+    padding-right: 2vh;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px grey;
+}
+
+#button2 {
+    color: black;
+    margin-top: 2.5vh;
+    background-color: #ADD8E6;
+    border-radius: 0px 50px 50px 0px ;
+    border: none;
+    padding: 3%;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px grey;
 }
