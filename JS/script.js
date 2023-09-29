@@ -49,10 +49,12 @@ function addPoint(playerIndex){
         case -1:
             player1.score --;
             localStorage.setItem("player1", JSON.stringify(player1));
+            sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case -2:
             player2.score --;
             localStorage.setItem("player2", JSON.stringify(player2));
+            sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         default:
             break;
