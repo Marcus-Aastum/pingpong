@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spill 1</title>
+    <title>Document</title>
     <link rel="stylesheet" href="../CSS/main.css">
 </head>
-<body onkeydown="inputHandler(event.key)">
-    <div class="player1">
-        <h1 id="navnP1">Spiller 1:</h1>
-        <h1 class="score">Poeng:</h1>
-        <h2 class="score" id="scoreP1">Score</h2>
-    </div>
-    <div class="player2">
-        <h1 id="navnP2">Spiller 2:</h1>
-        <h1 class="score">Poeng:</h1>
-        <h2 class ="score" id="scoreP2">Score</h2>
-    </div>
-    <div class="buttonsDiv">
-        <button onclick="clearPlayers()" id="button1">Nytt spill</button>
-        <button id="button2" onclick="switchSides()">Bytt side</button>
+<body>
+    <div class="formDiv">
+        <form name="newPlayer" action="" method="">
+            <input type="text" name="playerID" id="" placeholder="playerID">
+            <input type="text" name="playerNameInput" id="" placeholder="Navn på spiller">
+        </form>
+        <input type="button" name="" value="Lag Spiller" onclick="createNewPlayer(document.getElementsByTagName('form')[0])">
+        <button onclick="tilSpill()">Til spill</button>
+        <h3 id="playerN1">Spiller 1:</h3>
+        <h3 id="playerN2">Spiller 2:</h3>
+        <h1 id="alert"></h1>
     </div>
     <script src="../JS/script.js"></script>
 </body>

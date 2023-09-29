@@ -60,7 +60,34 @@ h2 {
     margin-top: 80vh;
     text-align: center;
     left: 37%;
+    opacity: 0;
 }
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.buttonsDiv:hover {
+    animation: fadeIn .5s;
+}
+
+.buttonsDiv:not(:hover) {
+    animation: fadeOut .5s;
+  }
 
 #button1{
     color: black;
