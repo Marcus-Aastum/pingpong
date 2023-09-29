@@ -1,6 +1,10 @@
 let player1 = JSON.parse(localStorage.getItem("player1"));
 let player2 = JSON.parse(localStorage.getItem("player2"));
+let player3 = JSON.parse(localStorage.getItem("player3"));
+let player4 = JSON.parse(localStorage.getItem("player4"));
 let switchedSides = false;
+let countPoints = 0;
+let countWins = 0;
 
 const inputField = document.getElementById("input-field");
 
@@ -19,6 +23,7 @@ function createNewPlayer(form){
             player1 = {};
             player1.id = form.playerNameInput.value;
             player1.score = 0;
+            player1.wins = 0;
             player1.password = form.password.value;
             localStorage.setItem("password", form.password.value)
             console.log(player1.password)
@@ -30,10 +35,31 @@ function createNewPlayer(form){
             player2 = {};
             player2.id = form.playerNameInput.value;
             player2.score = 0;
+            player2.wins = 0;
             player2.password = form.password.value;
             localStorage.setItem("player2", JSON.stringify(player2))
             document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
+            break;
+        case 3:
+            player3 = {};
+            player3.id = form.playerNameInput.value;
+            player3.score = 0;
+            player3.wins = 0;
+            player3.password = form.password.value;
+            localStorage.setItem("player3", JSON.stringify(player3))
+            document.getElementById("playerN3").innerHTML = "Spiller 3: " + player3.id;
+            sendData("player3",JSON.parse(localStorage.getItem("player3")))
+            break;
+        case 4:
+            player4 = {};
+            player4.id = form.playerNameInput.value;
+            player4.score = 0;
+            player4.wins = 0;
+            player4.password = form.password.value;
+            localStorage.setItem("player4", JSON.stringify(player4))
+            document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
         default:
             break;
@@ -44,12 +70,22 @@ function addPoint(playerIndex){
         case 1:
             player1.score ++;
             player1.password = localStorage.getItem("password")
+            if (player1.score >= countPoints && player1.score - player2.score >= 2){
+                player1.wins ++;
+                player1.score = 0;
+                player2.score = 0;
+            }
             localStorage.setItem("player1", JSON.stringify(player1));
             sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case 2:
             player2.score ++;
             player2.password = localStorage.getItem("password")
+            if (player2.score >= countPoints && player2.score - player1.score >= 2){
+                player2.wins ++;
+                player2.score = 0;
+                player1.score = 0;
+            }
             localStorage.setItem("player2", JSON.stringify(player2));
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
@@ -131,12 +167,16 @@ function updateScore(){
         document.getElementById("navnP2").innerHTML = player2.id
         document.getElementById("scoreP1").innerHTML = player1.score
         document.getElementById("scoreP2").innerHTML = player2.score
+        document.getElementById("winsP1").innerHTML = player1.wins
+        document.getElementById("winsP2").innerHTML = player2.wins
     }
     else{
         document.getElementById("navnP2").innerHTML = player1.id
         document.getElementById("navnP1").innerHTML = player2.id
         document.getElementById("scoreP2").innerHTML = player1.score
         document.getElementById("scoreP1").innerHTML = player2.score
+        document.getElementById("winsP2").innerHTML = player1.wins
+        document.getElementById("winsP1").innerHTML = player2.wins
     }
 }
 if(window.location.pathname == "/html/" || window.location.pathname == "/html/game.html"){
@@ -189,8 +229,15 @@ function tilSpill(){
     if (!player1 || !player2 || player1.id === "" || player2.id === ""){
         document.getElementById("alert").innerHTML = "Du må legge til minst 2 spillere før du kan starte spillet"}
     
-    else{ 
-        window.location.href="game.html"
+    // else if(player3.id === "" || player4.id === ""){ 
+    //     window.location.href="game2.html"
+    // }
+
+    // else if(!player3 || !player4 || player3.id === "" || player4.id === ""){
+    //     window.location.href="game1.html"
+    // }
+    else{
+        window.location.href="game1.html"
     }
 }
 function sendData(url, dataToSend){
@@ -223,6 +270,6 @@ if (window.location.pathname == "/html/index.html" || window.location.pathname =
     localStorage.setItem("player1", JSON.stringify(player2))
     localStorage.setItem("player2", JSON.stringify(player2))
 }
-if (window.location.pathname == "/html/game.html"){
+if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"    ){
     setInterval(updateScore, 1000)
 }
