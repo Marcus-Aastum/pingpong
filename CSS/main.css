@@ -134,11 +134,39 @@ input {
     font-size: 2vh;
     text-align: left;
     padding: 0;
+    text-align: center;
+    padding: 2vh;
 }
 
 .formDiv {
     margin: auto;
     text-align: center;
-    background-color: rgb(255, 116, 2);
+    background-color: rgb(255, 116, 2, .5);
     width: 50%;
+    height: fit-content;
+    margin-top: 15%;
+    border-radius: 10px;
+}
+
+.formDiv form {
+    padding-top: 5vh;
+}
+
+form input {
+    border-radius: 10px;
+    text-align: center;
+}
+.buttonDivIndex {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+#buttonIndex {
+    text-align: center;
+    padding: 1vh;
+    margin: 1vh;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5vh;
 }
