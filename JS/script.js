@@ -19,15 +19,21 @@ function createNewPlayer(form){
             player1 = {};
             player1.id = form.playerNameInput.value;
             player1.score = 0;
+            player1.password = form.password.value;
+            localStorage.setItem("password", form.password.value)
+            console.log(player1.password)
             localStorage.setItem("player1", JSON.stringify(player1))
             document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id
+            sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case 2:
             player2 = {};
             player2.id = form.playerNameInput.value;
             player2.score = 0;
+            player2.password = form.password.value;
             localStorage.setItem("player2", JSON.stringify(player2))
             document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
+            sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         default:
             break;
@@ -37,22 +43,26 @@ function addPoint(playerIndex){
     switch (playerIndex) {
         case 1:
             player1.score ++;
+            player1.password = localStorage.getItem("password")
             localStorage.setItem("player1", JSON.stringify(player1));
             sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case 2:
             player2.score ++;
+            player2.password = localStorage.getItem("password")
             localStorage.setItem("player2", JSON.stringify(player2));
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         
         case -1:
             player1.score --;
+            player1.password = localStorage.getItem("password")
             localStorage.setItem("player1", JSON.stringify(player1));
             sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case -2:
             player2.score --;
+            player2.password = localStorage.getItem("password")
             localStorage.setItem("player2", JSON.stringify(player2));
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
@@ -69,6 +79,53 @@ console.log(player1, player2)
 // addPoint(1)
 console.log(player1, player2)
 function updateScore(){
+    fetch('http://192.168.10.117/api/send/player1', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player1 = data
+        player1.password = localStorage.getItem("password")
+        localStorage.setItem("player1", JSON.stringify(player1))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    fetch('http://192.168.10.117/api/send/player2', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player2 = data
+        player2.password = localStorage.getItem("password")
+        localStorage.setItem("player2", JSON.stringify(player2))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
     if (!switchedSides){
         document.getElementById("navnP1").innerHTML = player1.id
         document.getElementById("navnP2").innerHTML = player2.id
@@ -137,7 +194,7 @@ function tilSpill(){
     }
 }
 function sendData(url, dataToSend){
-    fetch("http://pingpong.aastum.no/api/motta/"+url, {
+    fetch("http://192.168.10.117/api/motta/"+url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -159,8 +216,13 @@ function sendData(url, dataToSend){
 if (window.location.pathname == "/html/index.html" || window.location.pathname == "/html/"){
     player1.id = ""
     player1.score = 0
+    player1.password = ""
     player2.id = ""
     player2.score = 0
+    player2.password = ""
     localStorage.setItem("player1", JSON.stringify(player2))
     localStorage.setItem("player2", JSON.stringify(player2))
+}
+if (window.location.pathname == "/html/game.html"){
+    setInterval(updateScore, 1000)
 }
