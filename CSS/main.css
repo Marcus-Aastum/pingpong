@@ -82,15 +82,22 @@ h2 {
   }
 
 .buttonsDiv:hover {
-    animation: fadeIn .5s;
+    animation: fadeIn .5s forwards;
 }
 
 .buttonsDiv:not(:hover) {
-    animation: fadeOut .5s;
+    animation: fadeOut .5s forwards;
   }
 
-#button1{
+button {
     color: black;
+}
+
+h3 {
+    color:#333;
+}
+
+#button1{
     margin-top: 2.5vh;
     margin-left: 2%;
     background-color: #ADD8E6;
@@ -104,7 +111,6 @@ h2 {
 }
 
 #button2 {
-    color: black;
     margin-top: 2.5vh;
     background-color: #ADD8E6;
     border-radius: 0px 50px 50px 0px ;
@@ -128,4 +134,11 @@ input {
     font-size: 2vh;
     text-align: left;
     padding: 0;
+}
+
+.formDiv {
+    margin: auto;
+    text-align: center;
+    background-color: rgb(255, 116, 2);
+    width: 50%;
 }
