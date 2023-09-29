@@ -38,19 +38,23 @@ function addPoint(playerIndex){
         case 1:
             player1.score ++;
             localStorage.setItem("player1", JSON.stringify(player1));
+            sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case 2:
             player2.score ++;
             localStorage.setItem("player2", JSON.stringify(player2));
+            sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         
         case -1:
             player1.score --;
             localStorage.setItem("player1", JSON.stringify(player1));
+            sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case -2:
             player2.score --;
             localStorage.setItem("player2", JSON.stringify(player2));
+            sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         default:
             break;
@@ -131,6 +135,25 @@ function tilSpill(){
     else{ 
         window.location.href="game.html"
     }
+}
+function sendData(url, dataToSend){
+    fetch("http://pingpong.aastum.no/api/motta/"+url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Data sent successfully');
+        } else {
+            console.error('Failed to send data');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 if (window.location.pathname == "/html/index.html" || window.location.pathname == "/html/"){
