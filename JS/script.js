@@ -1,6 +1,17 @@
 let player1 = JSON.parse(localStorage.getItem("player1"));
 let player2 = JSON.parse(localStorage.getItem("player2"));
 let switchedSides = false;
+
+const inputField = document.getElementById("input-field");
+
+if (window.location.pathname == "/html/index.html" || window.location.pathname == "/html/"){
+    inputField.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        createNewPlayer(document.getElementsByTagName("form")[0]);
+    }
+    });
+}
+
 function createNewPlayer(form){
     console.log("test")
     switch (Number(form.playerID.value)) {
@@ -33,6 +44,15 @@ function addPoint(playerIndex){
             player2.score ++;
             localStorage.setItem("player2", JSON.stringify(player2));
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
+            break;
+        
+        case -1:
+            player1.score --;
+            localStorage.setItem("player1", JSON.stringify(player1));
+            break;
+        case -2:
+            player2.score --;
+            localStorage.setItem("player2", JSON.stringify(player2));
             break;
         default:
             break;
@@ -71,7 +91,13 @@ function inputHandler(key){
                 break;
             case "2":
                 addPoint(2)
-        
+                break;
+            case "a":
+                addPoint(-1)
+                break;
+            case "b":
+                addPoint(-2)
+                break;
             default:
                 break;
         }
@@ -79,11 +105,17 @@ function inputHandler(key){
     else{
         switch (key) {
             case "1":
-                addPoint(2)
+                addPoint(1)
                 break;
             case "2":
-                addPoint(1)
-        
+                addPoint(2)
+                break;
+            case "a":
+                addPoint(-1)
+                break;
+            case "b":
+                addPoint(-2)
+                break;
             default:
                 break;
         }
