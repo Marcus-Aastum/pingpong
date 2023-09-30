@@ -4,21 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spill</title>
-    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/game2.css">
 </head>
 <body onkeydown="inputHandler(event.key)">
     <div class="player1">
         <h1 id="navnP1">Spiller 1:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP1">0</h2>
         <h1 class="score">Poeng:</h1>
-        <h2 class="score" id="scoreP1">Score</h2>
+        <h2 class="score" id="scoreP1">0</h2>
     </div>
     <div class="player2">
         <h1 id="navnP2">Spiller 2:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP2">0</h2>
         <h1 class="score">Poeng:</h1>
-        <h2 class ="score" id="scoreP2">Score</h2>
-        <h1>Hei</h1>
+        <h2 class ="score" id="scoreP2">0</h2>
     </div>
-    <div class="buttonsDiv">
+    <div class="buttonsDiv" id="buttonsDiv1">
+        <button onclick="window.location.href='index.html'" id="button1">Nytt spill</button>
+        <button id="button2" onclick="switchSides()">Bytt side</button>
+    </div>
+    <div class="player3">
+        <h1 id="navnP3">Spiller 3:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP3">0</h2>
+        <h1 class="score">Poeng:</h1>
+        <h2 class ="score" id="scoreP3">0</h2>
+    </div>
+    <div class="player4">
+        <h1 id="navnP4">Spiller 4:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP4">0</h2>
+        <h1 class="score">Poeng:</h1>
+        <h2 class ="score" id="scoreP4">0</h2>
+    </div>
+    <div class="buttonsDiv" id="buttonsDiv2">
         <button onclick="window.location.href='index.html'" id="button1">Nytt spill</button>
         <button id="button2" onclick="switchSides()">Bytt side</button>
     </div>
