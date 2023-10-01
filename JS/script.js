@@ -161,102 +161,102 @@ console.log(player1, player2)
 // addPoint(0)
 // addPoint(1)
 console.log(player1, player2)
-function updateScore(countPlayers){
-    // fetch('http://192.168.10.117/api/send/player1', {
-    // method: 'GET',
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // }
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         return response.json(); // Parse the JSON response
-    //     } else {
-    //         console.error('Failed to fetch data');
-    //     }
-    // })
-    // .then(data => {
-    //     // console.log('Data received from the server:', data.id, data.score);
-    //     // Use the data in your web application
-    //     player1 = data
-    //     player1.password = localStorage.getItem("password")
-    //     localStorage.setItem("player1", JSON.stringify(player1))
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
+function updateScore(countPlayers = ""){
+    fetch('http://192.168.10.117/api/send/player1', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player1 = data
+        player1.password = localStorage.getItem("password")
+        localStorage.setItem("player1", JSON.stringify(player1))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
-    // fetch('http://192.168.10.117/api/send/player2', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         return response.json(); // Parse the JSON response
-    //     } else {
-    //         console.error('Failed to fetch data');
-    //     }
-    // })
-    // .then(data => {
-    //     // console.log('Data received from the server:', data.id, data.score);
-    //     // Use the data in your web application
-    //     player2 = data
-    //     player2.password = localStorage.getItem("password")
-    //     localStorage.setItem("player2", JSON.stringify(player2))
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
+    fetch('http://192.168.10.117/api/send/player2', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player2 = data
+        player2.password = localStorage.getItem("password")
+        localStorage.setItem("player2", JSON.stringify(player2))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
-    // fetch('http://192.168.10.117/api/send/player3', {
-    // method: 'GET',
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // }
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         return response.json(); // Parse the JSON response
-    //     } else {
-    //         console.error('Failed to fetch data');
-    //     }
-    // })
-    // .then(data => {
-    //     // console.log('Data received from the server:', data.id, data.score);
-    //     // Use the data in your web application
-    //     player3 = data
-    //     player3.password = localStorage.getItem("password")
-    //     localStorage.setItem("player3", JSON.stringify(player3))
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
+    fetch('http://192.168.10.117/api/send/player3', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player3 = data
+        player3.password = localStorage.getItem("password")
+        localStorage.setItem("player3", JSON.stringify(player3))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
-    // fetch('http://192.168.10.117/api/send/player4', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         return response.json(); // Parse the JSON response
-    //     } else {
-    //         console.error('Failed to fetch data');
-    //     }
-    // })
-    // .then(data => {
-    //     // console.log('Data received from the server:', data.id, data.score);
-    //     // Use the data in your web application
-    //     player4 = data
-    //     player4.password = localStorage.getItem("password")
-    //     localStorage.setItem("player4", JSON.stringify(player4))
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
+    fetch('http://192.168.10.117/api/send/player4', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player4 = data
+        player4.password = localStorage.getItem("password")
+        localStorage.setItem("player4", JSON.stringify(player4))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
 
     if (!switchedSidesG1 && countPlayers == 2){
@@ -287,11 +287,19 @@ function updateScore(countPlayers){
         document.getElementById("winsP4").innerHTML = player3.wins
         document.getElementById("winsP3").innerHTML = player4.wins
     }
-    else if (countPlayers == 6){
+    else if (!switchedSidesG1 && countPlayers == ""){
         document.getElementById("navnP1").innerHTML = player1.id
         document.getElementById("navnP2").innerHTML = player2.id
         document.getElementById("scoreP1").innerHTML = player1.score
         document.getElementById("scoreP2").innerHTML = player2.score
+    }
+    else if (switchedSidesG1 && countPlayers == ""){
+        document.getElementById("navnP2").innerHTML = player1.id
+        document.getElementById("navnP1").innerHTML = player2.id
+        document.getElementById("scoreP2").innerHTML = player1.score
+        document.getElementById("scoreP1").innerHTML = player2.score
+    }
+    else if (!switchedSidesG2 && countPlayers == ""){
         document.getElementById("navnP4").innerHTML = player4.id
         document.getElementById("navnP3").innerHTML = player3.id
         document.getElementById("scoreP4").innerHTML = player4.score
@@ -299,10 +307,18 @@ function updateScore(countPlayers){
         document.getElementById("winsP4").innerHTML = player4.wins
         document.getElementById("winsP3").innerHTML = player3.wins
     }
+    else if (switchedSidesG2 && countPlayers == ""){
+        document.getElementById("navnP4").innerHTML = player3.id
+        document.getElementById("navnP3").innerHTML = player4.id
+        document.getElementById("scoreP4").innerHTML = player3.score
+        document.getElementById("scoreP3").innerHTML = player4.score
+        document.getElementById("winsP4").innerHTML = player3.wins
+        document.getElementById("winsP3").innerHTML = player4.wins
+    }
     
 }
 if(window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"){
-    updateScore(6)
+    updateScore()
 }
 function inputHandler(key){
     if(!switchedSides){
