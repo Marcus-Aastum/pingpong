@@ -361,72 +361,14 @@ function updateScore(countPlayers = ""){
     }
     else{
 
-        if (!switchedSidesG1 && countPlayers == 2){
+     
             document.getElementById("navnP1").innerHTML = player1.id
             document.getElementById("navnP2").innerHTML = player2.id
             document.getElementById("scoreP1").innerHTML = player1.score
             document.getElementById("scoreP2").innerHTML = player2.score
             document.getElementById("winsP1").innerHTML = player1.wins
             document.getElementById("winsP2").innerHTML = player2.wins
-        }
-        else if (switchedSidesG1 && countPlayers == 2){
-            document.getElementById("navnP2").innerHTML = player1.id
-            document.getElementById("navnP1").innerHTML = player2.id
-            document.getElementById("scoreP2").innerHTML = player1.score
-            document.getElementById("scoreP1").innerHTML = player2.score
-            document.getElementById("winsP2").innerHTML = player1.wins
-            document.getElementById("winsP1").innerHTML = player2.wins
-        }
-        if (!switchedSidesG1 && countPlayers == ""){
-            document.getElementById("navnP1").innerHTML = player1.id
-            document.getElementById("navnP2").innerHTML = player2.id
-            document.getElementById("scoreP1").innerHTML = player1.score
-            document.getElementById("scoreP2").innerHTML = player2.score
-            document.getElementById("winsP1").innerHTML = player1.wins
-            document.getElementById("winsP2").innerHTML = player2.wins
-        }
-        else if (switchedSidesG1 && countPlayers == ""){
-            document.getElementById("navnP2").innerHTML = player1.id
-            document.getElementById("navnP1").innerHTML = player2.id
-            document.getElementById("scoreP2").innerHTML = player1.score
-            document.getElementById("scoreP1").innerHTML = player2.score
-            document.getElementById("winsP2").innerHTML = player1.wins
-            document.getElementById("winsP1").innerHTML = player2.wins
-        }
-        if (window.location.pathname=="/html/game2.html"){
-            if (!switchedSidesG2 && countPlayers == ""){
-                document.getElementById("navnP4").innerHTML = player4.id
-                document.getElementById("navnP3").innerHTML = player3.id
-                document.getElementById("scoreP4").innerHTML = player4.score
-                document.getElementById("scoreP3").innerHTML = player3.score
-                document.getElementById("winsP4").innerHTML = player4.wins
-                document.getElementById("winsP3").innerHTML = player3.wins
-            }
-            else if (switchedSidesG2 && countPlayers == ""){
-                document.getElementById("navnP4").innerHTML = player3.id
-                document.getElementById("navnP3").innerHTML = player4.id
-                document.getElementById("scoreP4").innerHTML = player3.score
-                document.getElementById("scoreP3").innerHTML = player4.score
-                document.getElementById("winsP4").innerHTML = player3.wins
-                document.getElementById("winsP3").innerHTML = player4.wins
-            }
-            if (!switchedSidesG2 && countPlayers == 4){
-                document.getElementById("navnP4").innerHTML = player4.id
-                document.getElementById("navnP3").innerHTML = player3.id
-                document.getElementById("scoreP4").innerHTML = player4.score
-                document.getElementById("scoreP3").innerHTML = player3.score
-                document.getElementById("winsP4").innerHTML = player4.wins
-                document.getElementById("winsP3").innerHTML = player3.wins
-            }
-            else if (switchedSidesG2 && countPlayers == 4){
-                document.getElementById("navnP4").innerHTML = player3.id
-                document.getElementById("navnP3").innerHTML = player4.id
-                document.getElementById("scoreP4").innerHTML = player3.score
-                document.getElementById("scoreP3").innerHTML = player4.score
-                document.getElementById("winsP4").innerHTML = player3.wins
-                document.getElementById("winsP3").innerHTML = player4.wins
-            }
-        }
+        
     }
     
     

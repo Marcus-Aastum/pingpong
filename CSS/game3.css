@@ -1,0 +1,170 @@
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background: white;
+    height: 99%;
+    border: white solid 5px;
+}
+.player1 {
+    background-color: rgb(255, 116, 2);
+    height: 33%;
+    width: 49.5%;
+    float: left;
+    border-right: white solid 5px;
+}
+
+.player2 {
+    /* background-color: rgb(15, 74, 157); */
+    background-color: rgb(255, 116, 2);
+    height: 33%;
+    width: 49.5%;
+    float: right;
+    border-left: white solid 5px;
+}
+.player3 {
+    background-color: rgb(15, 157, 53);
+    height: 33%;
+    width: 49.5%;
+    float: left;
+    border-right: white solid 5px;
+    border-top: white solid 5px;
+}
+
+.player4 {
+    background-color: rgb(15, 157, 53);
+    height: 33%;
+    width: 49.5%;
+    float: right;
+    border-left: white solid 5px;
+    border-top: white solid 5px;
+}
+.player5 {
+    background-color: rgb(15, 157, 53);
+    height: 33%;
+    width: 49.5%;
+    float: left;
+    border-right: white solid 5px;
+    border-top: white solid 5px;
+}
+
+.player6 {
+    background-color: rgb(15, 157, 53);
+    height: 33%;
+    width: 49.5%;
+    float: right;
+    border-left: white solid 5px;
+    border-top: white solid 5px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 0%;
+    padding-bottom: 2%;
+    font-size: 3em;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 3%;
+    font-size: 2.5em;
+}
+
+.score {
+    position: relative;
+}
+
+#buttonsDiv1 {
+    margin: auto;
+    height: 10%;
+    position: absolute;
+    background-color:rgba(255,255,255,.8);
+    border-radius: 10px;
+    width: 25%;
+    margin-top: 35vh;
+    text-align: center;
+    left: 37%;
+    opacity: 0;
+}
+
+#buttonsDiv2 {
+    margin: auto;
+    height: 10%;
+    position: absolute;
+    background-color:rgba(255,255,255,.8);
+    border-radius: 10px;
+    width: 25%;
+    margin-top: 80vh;
+    text-align: center;
+    left: 37%;
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.buttonsDiv:hover {
+    animation: fadeIn .5s forwards;
+}
+
+.buttonsDiv:not(:hover) {
+    animation: fadeOut .5s forwards;
+  }
+
+button {
+    color: black;
+}
+
+h3 {
+    color:#333;
+}
+
+#button1{
+    margin-top: 2.5vh;
+    margin-left: 2%;
+    background-color: #ADD8E6;
+    border-radius: 50px 0px 0px 50px ;
+    border: none;
+    padding: 3%;
+    padding-right: 2vh;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px grey;
+}
+
+#button2 {
+    margin-top: 2.5vh;
+    background-color: #ADD8E6;
+    border-radius: 0px 50px 50px 0px ;
+    border: none;
+    padding: 3%;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px grey;
+}
