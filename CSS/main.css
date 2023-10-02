@@ -18,7 +18,7 @@ body {
     border: white solid 5px;
 }
 .player1 {
-    background-color: rgb(15, 74, 157);
+    background-color: rgb(255, 116, 2);
     height: 100%;
     width: 49.5%;
     float: left;
@@ -26,7 +26,8 @@ body {
 }
 
 .player2 {
-    background-color: rgb(15, 74, 157);
+    /* background-color: rgb(15, 74, 157); */
+    background-color: rgb(255, 116, 2);
     height: 100%;
     width: 49.5%;
     float: right;
@@ -164,10 +165,33 @@ form input {
     width: 50%;
 }
 
+.formDiv h1 {
+    padding-top: 2%;
+    font-size: 3vh;
+    color: #333;
+}
+
+#input-field {
+    margin: auto;
+    padding: 2%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5vh;
+}
+
 #buttonIndex {
     text-align: center;
     padding: 1vh;
     margin: 1vh;
+    margin-top: 1.5em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5vh;
+}
+
+.inputNumberIndex {
+    margin: auto;
+    padding: 2%;
     border-radius: 10px;
     border: none;
     font-size: 1.5vh;
