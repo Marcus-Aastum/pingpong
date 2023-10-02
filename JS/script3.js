@@ -63,6 +63,26 @@ function createNewPlayer(form){
             // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
+        case 5:
+            player5 = {};
+            player5.id = form.playerNameInput.value;
+            player5.score = 0;
+            player5.wins = 0;
+            player5.password = form.password.value;
+            localStorage.setItem("player5", JSON.stringify(player5))
+            // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            sendData("player5",JSON.parse(localStorage.getItem("player5")))
+            break;
+        case 6:
+            player6 = {};
+            player6.id = form.playerNameInput.value;
+            player6.score = 0;
+            player6.wins = 0;
+            player6.password = form.password.value;
+            localStorage.setItem("player6", JSON.stringify(player6))
+            // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            sendData("player6",JSON.parse(localStorage.getItem("player6")))
+            break;
         default:
             break;
     }
@@ -133,6 +153,32 @@ function addPoint(playerIndex){
             localStorage.setItem("player4", JSON.stringify(player4));
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
+            case 5:
+                player5.score ++;
+                player5.password = localStorage.getItem("password")
+                if (player5.score >= countPoints && player5.score - player6.score >= 2){
+                    player5.wins ++;
+                    player5.score = 0;
+                    player5.score = 0;
+                    localStorage.setItem("player6", JSON.stringify(player6))
+                    sendData("player6",JSON.parse(localStorage.getItem("player6")))
+                }
+                localStorage.setItem("player5", JSON.stringify(player5));
+                sendData("player5",JSON.parse(localStorage.getItem("player5")))
+                break;
+            case 6:
+                player6.score ++;
+                player6.password = localStorage.getItem("password")
+                if (player6.score >= countPoints && player6.score - player5.score >= 2){
+                    player6.wins ++;
+                    player6.score = 0;
+                    player6.score = 0;
+                    localStorage.setItem("player5", JSON.stringify(player5))
+                    sendData("player5",JSON.parse(localStorage.getItem("player5")))
+                }
+                localStorage.setItem("player6", JSON.stringify(player6));
+                sendData("player6",JSON.parse(localStorage.getItem("player6")))
+                break;
         
         case -1:
             player1.score --;
@@ -158,13 +204,23 @@ function addPoint(playerIndex){
             localStorage.setItem("player4", JSON.stringify(player4));
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
+        case -5:
+            player5.score --;
+            player5.password = localStorage.getItem("password")
+            localStorage.setItem("player5", JSON.stringify(player5));
+            sendData("player5",JSON.parse(localStorage.getItem("player5")))
+            break;
+        case -6:
+            player6.score --;
+            player6.password = localStorage.getItem("password")
+            localStorage.setItem("player6", JSON.stringify(player6));
+            sendData("player6",JSON.parse(localStorage.getItem("player6")))
+            break;
         default:
             break;
     }
     if (player1.wins >= countWins){
         document.getElementsByClassName("player2")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("winsP1").remove()
         document.getElementById("scoreP1").remove()
         document.getElementsByClassName("player1")[0].style.width = "100%"
         document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
@@ -185,8 +241,6 @@ function addPoint(playerIndex){
     }
     else if (player2.wins >= countWins){
         document.getElementsByClassName("player1")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("winsP2").remove()
         document.getElementById("scoreP2").remove()
         document.getElementsByClassName("player2")[0].style.width = "100%"
         document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
@@ -205,8 +259,6 @@ function addPoint(playerIndex){
     }
     else if (player3.wins >= countWins){
         document.getElementsByClassName("player4")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
-        document.getElementById("winsP3").remove()
         document.getElementById("scoreP3").remove()
         document.getElementsByClassName("player3")[0].style.width = "100%"
         document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
@@ -214,8 +266,8 @@ function addPoint(playerIndex){
         player3.score = 0
         player4.wins = 0
         player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player1))
-        localStorage.setItem("player4", JSON.stringify(player2))
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
         setTimeout(function(){
          window.location.pathname=window.location.pathname;
         }, 5000)
@@ -227,8 +279,6 @@ function addPoint(playerIndex){
     }
     else if (player4.wins >= countWins){
         document.getElementsByClassName("player3")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
-        document.getElementById("winsP4").remove()
         document.getElementById("scoreP4").remove()
         document.getElementsByClassName("player4")[0].style.width = "100%"
         document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
@@ -236,8 +286,8 @@ function addPoint(playerIndex){
         player3.score = 0
         player4.wins = 0
         player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player1))
-        localStorage.setItem("player4", JSON.stringify(player2))
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
         setTimeout(function(){
          window.location.pathname=window.location.pathname;
         }, 5000)
@@ -245,6 +295,46 @@ function addPoint(playerIndex){
         sendData("player4", player4)
         updateScore()
     }
+    else if (player5.wins >= countWins){
+        document.getElementsByClassName("player6")[0].remove()
+        document.getElementById("scoreP5").remove()
+        document.getElementsByClassName("player5")[0].style.width = "100%"
+        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
+        player5.wins = 0
+        player5.score = 0
+        player6.wins = 0
+        player6.score = 0
+        localStorage.setItem("player5", JSON.stringify(player5))
+        localStorage.setItem("player6", JSON.stringify(player6))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player5", player5)
+        sendData("player6", player6)
+        updateScore()
+        
+       
+    }
+    else if (player6.wins >= countWins){
+        document.getElementsByClassName("player5")[0].remove()
+        document.getElementById("scoreP6").remove()
+        document.getElementsByClassName("player6")[0].style.width = "100%"
+        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
+        player5.wins = 0
+        player5.score = 0
+        player6.wins = 0
+        player6.score = 0
+        localStorage.setItem("player5", JSON.stringify(player5))
+        localStorage.setItem("player6", JSON.stringify(player6))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player5", player5)
+        sendData("player6", player6)
+        updateScore()
+    }
+    
+    
     else{
         updateScore()
     }
@@ -257,7 +347,7 @@ console.log(player1, player2)
 // addPoint(1)
 console.log(player1, player2)
 function updateScore(countPlayers = ""){
-    fetch('http://pingpong.aastum.no/api/send/player1', {
+    fetch('https://pingpong.aastum.no/api/send/player1', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -281,7 +371,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player2', {
+    fetch('https://pingpong.aastum.no/api/send/player2', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -305,7 +395,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player3', {
+    fetch('https://pingpong.aastum.no/api/send/player3', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -329,7 +419,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player4', {
+    fetch('https://pingpong.aastum.no/api/send/player4', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -352,6 +442,53 @@ function updateScore(countPlayers = ""){
     .catch(error => {
         console.error('Error:', error);
     });
+    fetch('https://pingpong.aastum.no/api/send/player5', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player5 = data
+        player5.password = localStorage.getItem("password")
+        localStorage.setItem("player5", JSON.stringify(player5))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    fetch('https://pingpong.aastum.no/api/send/player6', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player6 = data
+        player6.password = localStorage.getItem("password")
+        localStorage.setItem("player6", JSON.stringify(player6))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
     if(window.location.pathname == "/html/" || window.location.pathname == "/html/index.html"){
         document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id;
@@ -360,15 +497,18 @@ function updateScore(countPlayers = ""){
         document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
     }
     else{
-
-     
             document.getElementById("navnP1").innerHTML = player1.id
             document.getElementById("navnP2").innerHTML = player2.id
             document.getElementById("scoreP1").innerHTML = player1.score
             document.getElementById("scoreP2").innerHTML = player2.score
-            document.getElementById("winsP1").innerHTML = player1.wins
-            document.getElementById("winsP2").innerHTML = player2.wins
-        
+            document.getElementById("navnP3").innerHTML = player3.id
+            document.getElementById("navnP4").innerHTML = player4.id
+            document.getElementById("scoreP3").innerHTML = player3.score
+            document.getElementById("scoreP4").innerHTML = player4.score
+            document.getElementById("navnP5").innerHTML = player5.id
+            document.getElementById("navnP6").innerHTML = player6.id
+            document.getElementById("scoreP5").innerHTML = player5.score
+            document.getElementById("scoreP6").innerHTML = player6.score
     }
     
     
@@ -378,78 +518,46 @@ if(window.location.pathname == "/html/game1.html" || window.location.pathname ==
     updateScore()
 }
 function inputHandler(key){
-    if(!switchedSidesG1){
-        switch (key) {
-            case "1":
-                addPoint(1)
-                break;
-            case "2":
-                addPoint(2)
-                break;
-            case "a":
-                addPoint(-1)
-                break;
-            case "b":
-                addPoint(-2)
-                break;
-            default:
-                break;
+    switch (key) {
+        case "1":
+            addPoint(1)
+            break;
+        case "2":
+            addPoint(2)
+            break;
+        case "3":
+            addPoint(3)
+            break;
+        case "4":
+            addPoint(4)
+            break;
+        case "5":
+            addPoint(5)
+            break;
+        case "6":
+            addPoint(6)
+            break;
+        case "a":
+            addPoint(-1)
+            break;
+        case "b":
+            addPoint(-2)
+            break;
+        case "c":
+            addPoint(-3)
+            break;
+        case "d":
+            addPoint(-4)
+            break;
+        case "e":
+            addPoint(-5)
+            break;
+        case "f":
+            addPoint(-6)
+            break;
+        default:
+            break;
         }
-    }
-    else{
-        switch (key) {
-            case "1":
-                addPoint(2)
-                break;
-            case "2":
-                addPoint(1)
-                break;
-            case "a":
-                addPoint(-2)
-                break;
-            case "b":
-                addPoint(-1)
-                break;
-            default:
-                break;
-        }
-    }
-    if(!switchedSidesG2){
-        switch (key) {
-            case "3":
-                addPoint(3)
-                break;
-            case "4":
-                addPoint(4)
-                break;
-            case "c":
-                addPoint(-3)
-                break;
-            case "d":
-                addPoint(-4)
-                break;
-            default:
-                break;
-        }
-    }
-    else{
-        switch (key) {
-            case "3":
-                addPoint(4)
-                break;
-            case "4":
-                addPoint(3)
-                break;
-            case "c":
-                addPoint(-4)
-                break;
-            case "d":
-                addPoint(-3)
-                break;
-            default:
-                break;
-        }
-    }
 }
 function switchSides(countPlayers){
     if (countPlayers == 2){
@@ -477,7 +585,7 @@ function tilSpill(){
     }
 }
 function sendData(url, dataToSend){
-    fetch("http://pingpong.aastum.no/api/motta/"+url, {
+    fetch("https://pingpong.aastum.no/api/motta/"+url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -516,7 +624,7 @@ if (window.location.pathname == "/html/index.html" || window.location.pathname =
     document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
     document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
 }
-if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
+if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/game3.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
     setInterval(updateScore, 1000)
 }
 function deletePlayer(button){

@@ -4,7 +4,6 @@ let player3 = JSON.parse(localStorage.getItem("player3"));
 let player4 = JSON.parse(localStorage.getItem("player4"));
 let switchedSidesG1 = false;
 let switchedSidesG2 = false;
-localStorage.setItem("countPoints", 10); //MIDLERTIDIG
 let countPoints = localStorage.getItem("countPoints");
 let countWins = localStorage.getItem("countWins");
 
@@ -62,6 +61,26 @@ function createNewPlayer(form){
             localStorage.setItem("player4", JSON.stringify(player4))
             // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
+            break;
+        case 5:
+            player5 = {};
+            player5.id = form.playerNameInput.value;
+            player5.score = 0;
+            player5.wins = 0;
+            player5.password = form.password.value;
+            localStorage.setItem("player5", JSON.stringify(player5))
+            // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            sendData("player5",JSON.parse(localStorage.getItem("player5")))
+            break;
+        case 6:
+            player6 = {};
+            player6.id = form.playerNameInput.value;
+            player6.score = 0;
+            player6.wins = 0;
+            player6.password = form.password.value;
+            localStorage.setItem("player6", JSON.stringify(player6))
+            // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            sendData("player6",JSON.parse(localStorage.getItem("player6")))
             break;
         default:
             break;
@@ -257,7 +276,7 @@ console.log(player1, player2)
 // addPoint(1)
 console.log(player1, player2)
 function updateScore(countPlayers = ""){
-    fetch('http://pingpong.aastum.no/api/send/player1', {
+    fetch('https://pingpong.aastum.no/api/send/player1', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -281,7 +300,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player2', {
+    fetch('https://pingpong.aastum.no/api/send/player2', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -305,7 +324,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player3', {
+    fetch('https://pingpong.aastum.no/api/send/player3', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -329,7 +348,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://pingpong.aastum.no/api/send/player4', {
+    fetch('https://pingpong.aastum.no/api/send/player4', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -348,6 +367,53 @@ function updateScore(countPlayers = ""){
         player4 = data
         player4.password = localStorage.getItem("password")
         localStorage.setItem("player4", JSON.stringify(player4))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    fetch('https://pingpong.aastum.no/api/send/player5', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player5 = data
+        player5.password = localStorage.getItem("password")
+        localStorage.setItem("player5", JSON.stringify(player5))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    fetch('https://pingpong.aastum.no/api/send/player6', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        player6 = data
+        player6.password = localStorage.getItem("password")
+        localStorage.setItem("player6", JSON.stringify(player6))
     })
     .catch(error => {
         console.error('Error:', error);
@@ -525,9 +591,12 @@ function tilSpill(){
         document.getElementById("alert").innerHTML = "Du må legge til minst 2 spillere før du kan starte spillet"
         }
     
-    else if(player3.id || player4.id){ 
+    else if((player3.id || player4.id) && !player5.id){ 
         window.location.href="../html/game2.html"
         console.log("game2")
+    }
+    else if(player5.id || player6.id){
+        window.location.href="../html/game3.html"
     }
     else{
         window.location.href="../html/game1.html"
@@ -535,7 +604,7 @@ function tilSpill(){
     }
 }
 function sendData(url, dataToSend){
-    fetch("http://pingpong.aastum.no/api/motta/"+url, {
+    fetch("https://pingpong.aastum.no/api/motta/"+url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -606,6 +675,20 @@ function deletePlayer(button){
             player4.password = localStorage.getItem("password")
             localStorage.setItem("player4", JSON.stringify(player4));
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
+            break;
+        case "5":
+            player5.id = ""
+            player5.score = 0
+            player5.password = localStorage.getItem("password")
+            localStorage.setItem("player5", JSON.stringify(player5));
+            sendData("player5",JSON.parse(localStorage.getItem("player5")))
+            break;
+        case "6":
+            player6.id = ""
+            player6.score = 0
+            player4.password = localStorage.getItem("password")
+            localStorage.setItem("player6", JSON.stringify(player6));
+            sendData("player6",JSON.parse(localStorage.getItem("player6")))
             break;
 
         default:

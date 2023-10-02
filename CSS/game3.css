@@ -51,7 +51,7 @@ body {
     border-top: white solid 5px;
 }
 .player5 {
-    background-color: rgb(15, 157, 53);
+    background-color: rgb(15, 74, 157);
     height: 33%;
     width: 49.5%;
     float: left;
@@ -60,7 +60,7 @@ body {
 }
 
 .player6 {
-    background-color: rgb(15, 157, 53);
+    background-color: rgb(15, 74, 157);
     height: 33%;
     width: 49.5%;
     float: right;
@@ -72,13 +72,13 @@ h1 {
     text-align: center;
     padding-top: 0%;
     padding-bottom: 2%;
-    font-size: 3em;
+    font-size: 6vh;
 }
 
 h2 {
     text-align: center;
-    padding-top: 3%;
-    font-size: 2.5em;
+    padding-top: 0%;
+    font-size: 5vh;
 }
 
 .score {
@@ -167,4 +167,13 @@ h3 {
     font-size: 2.5vh;
     cursor: pointer;
     box-shadow: 5px 5px 5px grey;
+}
+.bordtekst{
+    writing-mode: vertical-rl;
+    color: white;
+    z-index: 6;
+    text-align: center;
+    margin-top: 12vh;
+    font-size: 3vh;
+    position: absolute;
 }
