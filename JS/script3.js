@@ -4,7 +4,6 @@ let player3 = JSON.parse(localStorage.getItem("player3"));
 let player4 = JSON.parse(localStorage.getItem("player4"));
 let switchedSidesG1 = false;
 let switchedSidesG2 = false;
-localStorage.setItem("countPoints", 10); //MIDLERTIDIG
 let countPoints = localStorage.getItem("countPoints");
 let countWins = localStorage.getItem("countWins");
 
@@ -219,125 +218,7 @@ function addPoint(playerIndex){
         default:
             break;
     }
-    if (player1.wins >= countWins){
-        document.getElementsByClassName("player2")[0].remove()
-        document.getElementById("scoreP1").remove()
-        document.getElementsByClassName("player1")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
-        player1.wins = 0
-        player1.score = 0
-        player2.wins = 0
-        player2.score = 0
-        localStorage.setItem("player1", JSON.stringify(player1))
-        localStorage.setItem("player2", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player1", player1)
-        sendData("player2", player2)
-        updateScore()
-        
-       
-    }
-    else if (player2.wins >= countWins){
-        document.getElementsByClassName("player1")[0].remove()
-        document.getElementById("scoreP2").remove()
-        document.getElementsByClassName("player2")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
-        player1.wins = 0
-        player1.score = 0
-        player2.wins = 0
-        player2.score = 0
-        localStorage.setItem("player1", JSON.stringify(player1))
-        localStorage.setItem("player2", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player1", player1)
-        sendData("player2", player2)
-        updateScore()
-    }
-    else if (player3.wins >= countWins){
-        document.getElementsByClassName("player4")[0].remove()
-        document.getElementById("scoreP3").remove()
-        document.getElementsByClassName("player3")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
-        player3.wins = 0
-        player3.score = 0
-        player4.wins = 0
-        player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player3))
-        localStorage.setItem("player4", JSON.stringify(player4))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player3", player3)
-        sendData("player4", player4)
-        updateScore()
-        
-       
-    }
-    else if (player4.wins >= countWins){
-        document.getElementsByClassName("player3")[0].remove()
-        document.getElementById("scoreP4").remove()
-        document.getElementsByClassName("player4")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
-        player3.wins = 0
-        player3.score = 0
-        player4.wins = 0
-        player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player3))
-        localStorage.setItem("player4", JSON.stringify(player4))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player3", player3)
-        sendData("player4", player4)
-        updateScore()
-    }
-    else if (player5.wins >= countWins){
-        document.getElementsByClassName("player6")[0].remove()
-        document.getElementById("scoreP5").remove()
-        document.getElementsByClassName("player5")[0].style.width = "100%"
-        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
-        player5.wins = 0
-        player5.score = 0
-        player6.wins = 0
-        player6.score = 0
-        localStorage.setItem("player5", JSON.stringify(player5))
-        localStorage.setItem("player6", JSON.stringify(player6))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player5", player5)
-        sendData("player6", player6)
-        updateScore()
-        
-       
-    }
-    else if (player6.wins >= countWins){
-        document.getElementsByClassName("player5")[0].remove()
-        document.getElementById("scoreP6").remove()
-        document.getElementsByClassName("player6")[0].style.width = "100%"
-        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
-        player5.wins = 0
-        player5.score = 0
-        player6.wins = 0
-        player6.score = 0
-        localStorage.setItem("player5", JSON.stringify(player5))
-        localStorage.setItem("player6", JSON.stringify(player6))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player5", player5)
-        sendData("player6", player6)
-        updateScore()
-    }
-    
-    
-    else{
-        updateScore()
-    }
+
 }
 console.log(player1, player2)
 // addPoint(0)
@@ -489,7 +370,114 @@ function updateScore(countPlayers = ""){
     .catch(error => {
         console.error('Error:', error);
     });
-
+    if (player1.wins >= countWins){
+        document.getElementsByClassName("player2")[0].remove()
+        document.getElementById("scoreP1").remove()
+        document.getElementsByClassName("player1")[0].style.width = "100%"
+        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        sendData("player1", player1)
+        sendData("player2", player2)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+        
+       
+    }
+    else if (player2.wins >= countWins){
+        document.getElementsByClassName("player1")[0].remove()
+        document.getElementById("scoreP2").remove()
+        document.getElementsByClassName("player2")[0].style.width = "100%"
+        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        sendData("player1", player1)
+        sendData("player2", player2)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+    }
+    else if (player3.wins >= countWins){
+        document.getElementsByClassName("player4")[0].remove()
+        document.getElementById("scoreP3").remove()
+        document.getElementsByClassName("player3")[0].style.width = "100%"
+        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
+        sendData("player3", player3)
+        sendData("player4", player4)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+        
+       
+    }
+    else if (player4.wins >= countWins){
+        document.getElementsByClassName("player3")[0].remove()
+        document.getElementById("scoreP4").remove()
+        document.getElementsByClassName("player4")[0].style.width = "100%"
+        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
+        sendData("player3", player3)
+        sendData("player4", player4)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+    }
+    else if (player5.wins >= countWins){
+        document.getElementsByClassName("player6")[0].remove()
+        document.getElementById("scoreP5").remove()
+        document.getElementsByClassName("player5")[0].style.width = "100%"
+        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
+        player5.wins = 0
+        player5.score = 0
+        player6.wins = 0
+        player6.score = 0
+        localStorage.setItem("player5", JSON.stringify(player5))
+        localStorage.setItem("player6", JSON.stringify(player6))
+        sendData("player5", player5)
+        sendData("player6", player6)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+        
+       
+    }
+    else if (player6.wins >= countWins){
+        document.getElementsByClassName("player5")[0].remove()
+        document.getElementById("scoreP6").remove()
+        document.getElementsByClassName("player6")[0].style.width = "100%"
+        document.getElementsByClassName("score")[8].innerHTML = "Vinner!"
+        player5.wins = 0
+        player5.score = 0
+        player6.wins = 0
+        player6.score = 0
+        localStorage.setItem("player5", JSON.stringify(player5))
+        localStorage.setItem("player6", JSON.stringify(player6))
+        sendData("player5", player5)
+        sendData("player6", player6)
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 2000)
+    }
     if(window.location.pathname == "/html/" || window.location.pathname == "/html/index.html"){
         document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id;
         document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
