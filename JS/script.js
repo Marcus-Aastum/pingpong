@@ -26,8 +26,7 @@ function createNewPlayer(form){
             player1.id = form.playerNameInput.value;
             player1.score = 0;
             player1.wins = 0;
-            player1.password = form.password.value;
-            localStorage.setItem("password", form.password.value)
+            player1.password = localStorage.getItem("password")
             console.log(player1.password)
             localStorage.setItem("player1", JSON.stringify(player1))
             document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id
@@ -38,7 +37,7 @@ function createNewPlayer(form){
             player2.id = form.playerNameInput.value;
             player2.score = 0;
             player2.wins = 0;
-            player2.password = form.password.value;
+            player2.password = localStorage.getItem("password")
             localStorage.setItem("player2", JSON.stringify(player2))
             document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
@@ -48,7 +47,7 @@ function createNewPlayer(form){
             player3.id = form.playerNameInput.value;
             player3.score = 0;
             player3.wins = 0;
-            player3.password = form.password.value;
+            player3.password = localStorage.getItem("password")
             localStorage.setItem("player3", JSON.stringify(player3))
             document.getElementById("playerN3").innerHTML = "Spiller 3: " + player3.id;
             sendData("player3",JSON.parse(localStorage.getItem("player3")))
@@ -58,7 +57,7 @@ function createNewPlayer(form){
             player4.id = form.playerNameInput.value;
             player4.score = 0;
             player4.wins = 0;
-            player4.password = form.password.value;
+            player4.password = localStorage.getItem("password")
             localStorage.setItem("player4", JSON.stringify(player4))
             document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
             sendData("player4",JSON.parse(localStorage.getItem("player4")))

@@ -96,6 +96,7 @@ button {
 
 h3 {
     color:#333;
+    padding-bottom: 2%;
 }
 
 #button1{
@@ -145,7 +146,7 @@ input {
     background-color: rgb(255, 255, 255, .5);
     width: 50%;
     height: fit-content;
-    margin-top: 15%;
+    margin-top: 7vh;
     border-radius: 10px;
     /* border: black .5px solid; */
     box-shadow: 5px 5px 5px grey;
@@ -233,4 +234,17 @@ form input {
     100% {
       transform:translateX(2%);
     }
+}
+
+.spillere h3 {
+    display: inline;
+}
+
+.spillere button {
+    margin: auto;
+    margin-left: 5%;
+    padding: 1%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5vh;
 }
