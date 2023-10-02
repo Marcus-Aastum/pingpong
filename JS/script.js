@@ -4,6 +4,7 @@ let player3 = JSON.parse(localStorage.getItem("player3"));
 let player4 = JSON.parse(localStorage.getItem("player4"));
 let switchedSidesG1 = false;
 let switchedSidesG2 = false;
+localStorage.setItem("countPoints", 10); //MIDLERTIDIG
 let countPoints = localStorage.getItem("countPoints");
 let countWins = localStorage.getItem("countWins");
 
@@ -87,6 +88,8 @@ function addPoint(playerIndex){
                 player1.wins ++;
                 player1.score = 0;
                 player2.score = 0;
+                localStorage.setItem("player2", JSON.stringify(player2))
+                sendData("player2",JSON.parse(localStorage.getItem("player2")))
             }
             localStorage.setItem("player1", JSON.stringify(player1));
             sendData("player1",JSON.parse(localStorage.getItem("player1")))
@@ -98,6 +101,8 @@ function addPoint(playerIndex){
                 player2.wins ++;
                 player2.score = 0;
                 player1.score = 0;
+                localStorage.setItem("player1", JSON.stringify(player1))
+                sendData("player1",JSON.parse(localStorage.getItem("player1")))
             }
             localStorage.setItem("player2", JSON.stringify(player2));
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
@@ -109,6 +114,8 @@ function addPoint(playerIndex){
                 player3.wins ++;
                 player3.score = 0;
                 player4.score = 0;
+                localStorage.setItem("player4", JSON.stringify(player4))
+                sendData("player4",JSON.parse(localStorage.getItem("player4")))
             }
             localStorage.setItem("player3", JSON.stringify(player3));
             sendData("player3",JSON.parse(localStorage.getItem("player3")))
@@ -120,6 +127,8 @@ function addPoint(playerIndex){
                 player4.wins ++;
                 player4.score = 0;
                 player3.score = 0;
+                localStorage.setItem("player3", JSON.stringify(player3))
+                sendData("player3",JSON.parse(localStorage.getItem("player3")))
             }
             localStorage.setItem("player4", JSON.stringify(player4));
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
@@ -264,57 +273,68 @@ function updateScore(countPlayers = ""){
         document.getElementById("navnP2").innerHTML = player2.id
         document.getElementById("scoreP1").innerHTML = player1.score
         document.getElementById("scoreP2").innerHTML = player2.score
+        document.getElementById("winsP1").innerHTML = player1.wins
+        document.getElementById("winsP2").innerHTML = player2.wins
     }
     else if (switchedSidesG1 && countPlayers == 2){
         document.getElementById("navnP2").innerHTML = player1.id
         document.getElementById("navnP1").innerHTML = player2.id
         document.getElementById("scoreP2").innerHTML = player1.score
         document.getElementById("scoreP1").innerHTML = player2.score
-    }
-    if (!switchedSidesG2 && countPlayers == 4){
-        document.getElementById("navnP4").innerHTML = player4.id
-        document.getElementById("navnP3").innerHTML = player3.id
-        document.getElementById("scoreP4").innerHTML = player4.score
-        document.getElementById("scoreP3").innerHTML = player3.score
-        document.getElementById("winsP4").innerHTML = player4.wins
-        document.getElementById("winsP3").innerHTML = player3.wins
-    }
-    else if (switchedSidesG2 && countPlayers == 4){
-        document.getElementById("navnP4").innerHTML = player3.id
-        document.getElementById("navnP3").innerHTML = player4.id
-        document.getElementById("scoreP4").innerHTML = player3.score
-        document.getElementById("scoreP3").innerHTML = player4.score
-        document.getElementById("winsP4").innerHTML = player3.wins
-        document.getElementById("winsP3").innerHTML = player4.wins
+        document.getElementById("winsP2").innerHTML = player1.wins
+        document.getElementById("winsP1").innerHTML = player2.wins
     }
     if (!switchedSidesG1 && countPlayers == ""){
         document.getElementById("navnP1").innerHTML = player1.id
         document.getElementById("navnP2").innerHTML = player2.id
         document.getElementById("scoreP1").innerHTML = player1.score
         document.getElementById("scoreP2").innerHTML = player2.score
+        document.getElementById("winsP1").innerHTML = player1.wins
+        document.getElementById("winsP2").innerHTML = player2.wins
     }
     else if (switchedSidesG1 && countPlayers == ""){
         document.getElementById("navnP2").innerHTML = player1.id
         document.getElementById("navnP1").innerHTML = player2.id
         document.getElementById("scoreP2").innerHTML = player1.score
         document.getElementById("scoreP1").innerHTML = player2.score
+        document.getElementById("winsP2").innerHTML = player1.wins
+        document.getElementById("winsP1").innerHTML = player2.wins
     }
-    if (!switchedSidesG2 && countPlayers == ""){
-        document.getElementById("navnP4").innerHTML = player4.id
-        document.getElementById("navnP3").innerHTML = player3.id
-        document.getElementById("scoreP4").innerHTML = player4.score
-        document.getElementById("scoreP3").innerHTML = player3.score
-        document.getElementById("winsP4").innerHTML = player4.wins
-        document.getElementById("winsP3").innerHTML = player3.wins
+    if (window.location.pathname=="/html/game2.html"){
+        if (!switchedSidesG2 && countPlayers == ""){
+            document.getElementById("navnP4").innerHTML = player4.id
+            document.getElementById("navnP3").innerHTML = player3.id
+            document.getElementById("scoreP4").innerHTML = player4.score
+            document.getElementById("scoreP3").innerHTML = player3.score
+            document.getElementById("winsP4").innerHTML = player4.wins
+            document.getElementById("winsP3").innerHTML = player3.wins
+        }
+        else if (switchedSidesG2 && countPlayers == ""){
+            document.getElementById("navnP4").innerHTML = player3.id
+            document.getElementById("navnP3").innerHTML = player4.id
+            document.getElementById("scoreP4").innerHTML = player3.score
+            document.getElementById("scoreP3").innerHTML = player4.score
+            document.getElementById("winsP4").innerHTML = player3.wins
+            document.getElementById("winsP3").innerHTML = player4.wins
+        }
+        if (!switchedSidesG2 && countPlayers == 4){
+            document.getElementById("navnP4").innerHTML = player4.id
+            document.getElementById("navnP3").innerHTML = player3.id
+            document.getElementById("scoreP4").innerHTML = player4.score
+            document.getElementById("scoreP3").innerHTML = player3.score
+            document.getElementById("winsP4").innerHTML = player4.wins
+            document.getElementById("winsP3").innerHTML = player3.wins
+        }
+        else if (switchedSidesG2 && countPlayers == 4){
+            document.getElementById("navnP4").innerHTML = player3.id
+            document.getElementById("navnP3").innerHTML = player4.id
+            document.getElementById("scoreP4").innerHTML = player3.score
+            document.getElementById("scoreP3").innerHTML = player4.score
+            document.getElementById("winsP4").innerHTML = player3.wins
+            document.getElementById("winsP3").innerHTML = player4.wins
+        }
     }
-    else if (switchedSidesG2 && countPlayers == ""){
-        document.getElementById("navnP4").innerHTML = player3.id
-        document.getElementById("navnP3").innerHTML = player4.id
-        document.getElementById("scoreP4").innerHTML = player3.score
-        document.getElementById("scoreP3").innerHTML = player4.score
-        document.getElementById("winsP4").innerHTML = player3.wins
-        document.getElementById("winsP3").innerHTML = player4.wins
-    }
+    
     
     
 }
@@ -421,7 +441,7 @@ function tilSpill(){
     }
 }
 function sendData(url, dataToSend){
-    fetch("http://192.168.10.117/api/motta/"+url, {
+    fetch("http://pingpong.aastum.no/api/motta/"+url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
