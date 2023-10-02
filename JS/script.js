@@ -121,8 +121,8 @@ function addPoint(playerIndex){
                 player4.score = 0;
                 player3.score = 0;
             }
-            localStorage.setItem("player2", JSON.stringify(player2));
-            sendData("player2",JSON.parse(localStorage.getItem("player2")))
+            localStorage.setItem("player4", JSON.stringify(player4));
+            sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
         
         case -1:
@@ -271,7 +271,7 @@ function updateScore(countPlayers = ""){
         document.getElementById("scoreP2").innerHTML = player1.score
         document.getElementById("scoreP1").innerHTML = player2.score
     }
-    else if (!switchedSidesG2 && countPlayers == 4){
+    if (!switchedSidesG2 && countPlayers == 4){
         document.getElementById("navnP4").innerHTML = player4.id
         document.getElementById("navnP3").innerHTML = player3.id
         document.getElementById("scoreP4").innerHTML = player4.score
@@ -287,7 +287,7 @@ function updateScore(countPlayers = ""){
         document.getElementById("winsP4").innerHTML = player3.wins
         document.getElementById("winsP3").innerHTML = player4.wins
     }
-    else if (!switchedSidesG1 && countPlayers == ""){
+    if (!switchedSidesG1 && countPlayers == ""){
         document.getElementById("navnP1").innerHTML = player1.id
         document.getElementById("navnP2").innerHTML = player2.id
         document.getElementById("scoreP1").innerHTML = player1.score
@@ -299,7 +299,7 @@ function updateScore(countPlayers = ""){
         document.getElementById("scoreP2").innerHTML = player1.score
         document.getElementById("scoreP1").innerHTML = player2.score
     }
-    else if (!switchedSidesG2 && countPlayers == ""){
+    if (!switchedSidesG2 && countPlayers == ""){
         document.getElementById("navnP4").innerHTML = player4.id
         document.getElementById("navnP3").innerHTML = player3.id
         document.getElementById("scoreP4").innerHTML = player4.score
@@ -316,12 +316,13 @@ function updateScore(countPlayers = ""){
         document.getElementById("winsP3").innerHTML = player4.wins
     }
     
+    
 }
 if(window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"){
     updateScore()
 }
 function inputHandler(key){
-    if(!switchedSides){
+    if(!switchedSidesG1){
         switch (key) {
             case "1":
                 addPoint(1)
@@ -329,17 +330,41 @@ function inputHandler(key){
             case "2":
                 addPoint(2)
                 break;
-            case "3":
-                addPoint(3)
-                break;
-            case "4":
-                addPoint(4)
-                break;
             case "a":
                 addPoint(-1)
                 break;
             case "b":
                 addPoint(-2)
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        switch (key) {
+            case "1":
+                addPoint(2)
+                break;
+            case "2":
+                addPoint(1)
+                break;
+            case "a":
+                addPoint(-2)
+                break;
+            case "b":
+                addPoint(-1)
+                break;
+            default:
+                break;
+        }
+    }
+    if(!switchedSidesG2){
+        switch (key) {
+            case "3":
+                addPoint(3)
+                break;
+            case "4":
+                addPoint(4)
                 break;
             case "c":
                 addPoint(-3)
@@ -353,29 +378,17 @@ function inputHandler(key){
     }
     else{
         switch (key) {
-            case "1":
-                addPoint(1)
-                break;
-            case "2":
-                addPoint(2)
-                break;
             case "3":
-                addPoint(3)
-                break;
-            case "4":
                 addPoint(4)
                 break;
-            case "a":
-                addPoint(-1)
-                break;
-            case "b":
-                addPoint(-2)
+            case "4":
+                addPoint(3)
                 break;
             case "c":
-                addPoint(-3)
+                addPoint(-4)
                 break;
             case "d":
-                addPoint(-4)
+                addPoint(-3)
                 break;
             default:
                 break;
