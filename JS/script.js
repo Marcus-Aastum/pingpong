@@ -162,7 +162,7 @@ console.log(player1, player2)
 // addPoint(1)
 console.log(player1, player2)
 function updateScore(countPlayers = ""){
-    fetch('http://192.168.10.117/api/send/player1', {
+    fetch('http://pingpong.aastum.no/api/send/player1', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -186,7 +186,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://192.168.10.117/api/send/player2', {
+    fetch('http://pingpong.aastum.no/api/send/player2', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -210,7 +210,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://192.168.10.117/api/send/player3', {
+    fetch('http://pingpong.aastum.no/api/send/player3', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -234,7 +234,7 @@ function updateScore(countPlayers = ""){
         console.error('Error:', error);
     });
 
-    fetch('http://192.168.10.117/api/send/player4', {
+    fetch('http://pingpong.aastum.no/api/send/player4', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
