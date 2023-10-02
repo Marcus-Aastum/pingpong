@@ -161,7 +161,93 @@ function addPoint(playerIndex){
         default:
             break;
     }
-    updateScore()
+    if (player1.wins >= countWins){
+        document.getElementsByClassName("player2")[0].remove()
+        document.getElementsByClassName("wins")[0].remove()
+        document.getElementById("winsP1").remove()
+        document.getElementById("scoreP1").remove()
+        document.getElementsByClassName("player1")[0].style.width = "100%"
+        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player1", player1)
+        sendData("player2", player2)
+        updateScore()
+        
+       
+    }
+    else if (player2.wins >= countWins){
+        document.getElementsByClassName("player1")[0].remove()
+        document.getElementsByClassName("wins")[1].remove()
+        document.getElementById("winsP2").remove()
+        document.getElementById("scoreP2").remove()
+        document.getElementsByClassName("player2")[0].style.width = "100%"
+        document.getElementsByClassName("score")[1].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player1", player1)
+        sendData("player2", player2)
+        updateScore()
+    }
+    else if (player3.wins >= countWins){
+        document.getElementsByClassName("player4")[0].remove()
+        document.getElementsByClassName("wins")[4].remove()
+        document.getElementById("winsP3").remove()
+        document.getElementById("scoreP3").remove()
+        document.getElementsByClassName("player3")[0].style.width = "100%"
+        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player1))
+        localStorage.setItem("player4", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player3", player3)
+        sendData("player4", player4)
+        updateScore()
+        
+       
+    }
+    else if (player4.wins >= countWins){
+        document.getElementsByClassName("player3")[0].remove()
+        document.getElementsByClassName("wins")[3].remove()
+        document.getElementById("winsP4").remove()
+        document.getElementById("scoreP4").remove()
+        document.getElementsByClassName("player4")[0].style.width = "100%"
+        document.getElementsByClassName("score")[3].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player1))
+        localStorage.setItem("player4", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player3", player3)
+        sendData("player4", player4)
+        updateScore()
+    }
+    else{
+        updateScore()
+    }
 }
 console.log(player1, player2)
 // addPoint(0)
@@ -171,101 +257,101 @@ console.log(player1, player2)
 // addPoint(1)
 console.log(player1, player2)
 function updateScore(countPlayers = ""){
-    fetch('http://pingpong.aastum.no/api/send/player1', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Parse the JSON response
-        } else {
-            console.error('Failed to fetch data');
-        }
-    })
-    .then(data => {
-        // console.log('Data received from the server:', data.id, data.score);
-        // Use the data in your web application
-        player1 = data
-        player1.password = localStorage.getItem("password")
-        localStorage.setItem("player1", JSON.stringify(player1))
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    // fetch('http://pingpong.aastum.no/api/send/player1', {
+    // method: 'GET',
+    // headers: {
+    //     'Content-Type': 'application/json'
+    // }
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         return response.json(); // Parse the JSON response
+    //     } else {
+    //         console.error('Failed to fetch data');
+    //     }
+    // })
+    // .then(data => {
+    //     // console.log('Data received from the server:', data.id, data.score);
+    //     // Use the data in your web application
+    //     player1 = data
+    //     player1.password = localStorage.getItem("password")
+    //     localStorage.setItem("player1", JSON.stringify(player1))
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
 
-    fetch('http://pingpong.aastum.no/api/send/player2', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Parse the JSON response
-        } else {
-            console.error('Failed to fetch data');
-        }
-    })
-    .then(data => {
-        // console.log('Data received from the server:', data.id, data.score);
-        // Use the data in your web application
-        player2 = data
-        player2.password = localStorage.getItem("password")
-        localStorage.setItem("player2", JSON.stringify(player2))
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    // fetch('http://pingpong.aastum.no/api/send/player2', {
+    //     method: 'GET',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         return response.json(); // Parse the JSON response
+    //     } else {
+    //         console.error('Failed to fetch data');
+    //     }
+    // })
+    // .then(data => {
+    //     // console.log('Data received from the server:', data.id, data.score);
+    //     // Use the data in your web application
+    //     player2 = data
+    //     player2.password = localStorage.getItem("password")
+    //     localStorage.setItem("player2", JSON.stringify(player2))
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
 
-    fetch('http://pingpong.aastum.no/api/send/player3', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Parse the JSON response
-        } else {
-            console.error('Failed to fetch data');
-        }
-    })
-    .then(data => {
-        // console.log('Data received from the server:', data.id, data.score);
-        // Use the data in your web application
-        player3 = data
-        player3.password = localStorage.getItem("password")
-        localStorage.setItem("player3", JSON.stringify(player3))
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    // fetch('http://pingpong.aastum.no/api/send/player3', {
+    // method: 'GET',
+    // headers: {
+    //     'Content-Type': 'application/json'
+    // }
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         return response.json(); // Parse the JSON response
+    //     } else {
+    //         console.error('Failed to fetch data');
+    //     }
+    // })
+    // .then(data => {
+    //     // console.log('Data received from the server:', data.id, data.score);
+    //     // Use the data in your web application
+    //     player3 = data
+    //     player3.password = localStorage.getItem("password")
+    //     localStorage.setItem("player3", JSON.stringify(player3))
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
 
-    fetch('http://pingpong.aastum.no/api/send/player4', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Parse the JSON response
-        } else {
-            console.error('Failed to fetch data');
-        }
-    })
-    .then(data => {
-        // console.log('Data received from the server:', data.id, data.score);
-        // Use the data in your web application
-        player4 = data
-        player4.password = localStorage.getItem("password")
-        localStorage.setItem("player4", JSON.stringify(player4))
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    // fetch('http://pingpong.aastum.no/api/send/player4', {
+    //     method: 'GET',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         return response.json(); // Parse the JSON response
+    //     } else {
+    //         console.error('Failed to fetch data');
+    //     }
+    // })
+    // .then(data => {
+    //     // console.log('Data received from the server:', data.id, data.score);
+    //     // Use the data in your web application
+    //     player4 = data
+    //     player4.password = localStorage.getItem("password")
+    //     localStorage.setItem("player4", JSON.stringify(player4))
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
 
 
     if (!switchedSidesG1 && countPlayers == 2){
