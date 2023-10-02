@@ -95,11 +95,15 @@ function redirect(){
             console.error('Error:', error);
         });
     
-    if(window.location.pathname=="/html/game2.html" && !player3.id && !player4.id){
-        window.location.pathname="/html/game1.html"
+    if(window.location.pathname=="/html/game2.html"){
+        if(!player3.id && !player4.id){
+            window.location.pathname="/html/game1.html"
+        }
     }
-    else if (window.location.pathname=="/html/game1.html" && player3.id || player4.id){
-        window.location.pathname="/html/game2.html"
+    else if (window.location.pathname=="/html/game1.html"){
+        if(player3.id || player4.id){
+            window.location.pathname="/html/game2.html"
+        }
     }
 }
 setInterval(redirect, 5000)
