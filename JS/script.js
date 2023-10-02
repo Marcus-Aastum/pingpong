@@ -30,7 +30,7 @@ function createNewPlayer(form){
             localStorage.setItem("password", form.password.value)
             console.log(player1.password)
             localStorage.setItem("player1", JSON.stringify(player1))
-            document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id
+            // document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id
             sendData("player1",JSON.parse(localStorage.getItem("player1")))
             break;
         case 2:
@@ -40,7 +40,7 @@ function createNewPlayer(form){
             player2.wins = 0;
             player2.password = form.password.value;
             localStorage.setItem("player2", JSON.stringify(player2))
-            document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
+            // document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
             sendData("player2",JSON.parse(localStorage.getItem("player2")))
             break;
         case 3:
@@ -50,7 +50,7 @@ function createNewPlayer(form){
             player3.wins = 0;
             player3.password = form.password.value;
             localStorage.setItem("player3", JSON.stringify(player3))
-            document.getElementById("playerN3").innerHTML = "Spiller 3: " + player3.id;
+            // document.getElementById("playerN3").innerHTML = "Spiller 3: " + player3.id;
             sendData("player3",JSON.parse(localStorage.getItem("player3")))
             break;
         case 4:
@@ -60,7 +60,7 @@ function createNewPlayer(form){
             player4.wins = 0;
             player4.password = form.password.value;
             localStorage.setItem("player4", JSON.stringify(player4))
-            document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
+            // document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
             sendData("player4",JSON.parse(localStorage.getItem("player4")))
             break;
         default:
@@ -266,77 +266,80 @@ function updateScore(countPlayers = ""){
     .catch(error => {
         console.error('Error:', error);
     });
-
-
-    if (!switchedSidesG1 && countPlayers == 2){
-        document.getElementById("navnP1").innerHTML = player1.id
-        document.getElementById("navnP2").innerHTML = player2.id
-        document.getElementById("scoreP1").innerHTML = player1.score
-        document.getElementById("scoreP2").innerHTML = player2.score
-        document.getElementById("winsP1").innerHTML = player1.wins
-        document.getElementById("winsP2").innerHTML = player2.wins
+    if(window.location.pathname == "/html/" || window.location.pathname == "/html/index.html"){
+        document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id;
+        document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
+        document.getElementById("playerN3").innerHTML = "Spiller 3: " + player3.id;
+        document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
     }
-    else if (switchedSidesG1 && countPlayers == 2){
-        document.getElementById("navnP2").innerHTML = player1.id
-        document.getElementById("navnP1").innerHTML = player2.id
-        document.getElementById("scoreP2").innerHTML = player1.score
-        document.getElementById("scoreP1").innerHTML = player2.score
-        document.getElementById("winsP2").innerHTML = player1.wins
-        document.getElementById("winsP1").innerHTML = player2.wins
-    }
-    if (!switchedSidesG1 && countPlayers == ""){
-        document.getElementById("navnP1").innerHTML = player1.id
-        document.getElementById("navnP2").innerHTML = player2.id
-        document.getElementById("scoreP1").innerHTML = player1.score
-        document.getElementById("scoreP2").innerHTML = player2.score
-        document.getElementById("winsP1").innerHTML = player1.wins
-        document.getElementById("winsP2").innerHTML = player2.wins
-    }
-    else if (switchedSidesG1 && countPlayers == ""){
-        document.getElementById("navnP2").innerHTML = player1.id
-        document.getElementById("navnP1").innerHTML = player2.id
-        document.getElementById("scoreP2").innerHTML = player1.score
-        document.getElementById("scoreP1").innerHTML = player2.score
-        document.getElementById("winsP2").innerHTML = player1.wins
-        document.getElementById("winsP1").innerHTML = player2.wins
-    }
-    if (window.location.pathname=="/html/game2.html"){
-        if (!switchedSidesG2 && countPlayers == ""){
-            document.getElementById("navnP4").innerHTML = player4.id
-            document.getElementById("navnP3").innerHTML = player3.id
-            document.getElementById("scoreP4").innerHTML = player4.score
-            document.getElementById("scoreP3").innerHTML = player3.score
-            document.getElementById("winsP4").innerHTML = player4.wins
-            document.getElementById("winsP3").innerHTML = player3.wins
+    else{
+        if (!switchedSidesG1 && countPlayers == 2){
+            document.getElementById("navnP1").innerHTML = player1.id
+            document.getElementById("navnP2").innerHTML = player2.id
+            document.getElementById("scoreP1").innerHTML = player1.score
+            document.getElementById("scoreP2").innerHTML = player2.score
+            document.getElementById("winsP1").innerHTML = player1.wins
+            document.getElementById("winsP2").innerHTML = player2.wins
         }
-        else if (switchedSidesG2 && countPlayers == ""){
-            document.getElementById("navnP4").innerHTML = player3.id
-            document.getElementById("navnP3").innerHTML = player4.id
-            document.getElementById("scoreP4").innerHTML = player3.score
-            document.getElementById("scoreP3").innerHTML = player4.score
-            document.getElementById("winsP4").innerHTML = player3.wins
-            document.getElementById("winsP3").innerHTML = player4.wins
+        else if (switchedSidesG1 && countPlayers == 2){
+            document.getElementById("navnP2").innerHTML = player1.id
+            document.getElementById("navnP1").innerHTML = player2.id
+            document.getElementById("scoreP2").innerHTML = player1.score
+            document.getElementById("scoreP1").innerHTML = player2.score
+            document.getElementById("winsP2").innerHTML = player1.wins
+            document.getElementById("winsP1").innerHTML = player2.wins
         }
-        if (!switchedSidesG2 && countPlayers == 4){
-            document.getElementById("navnP4").innerHTML = player4.id
-            document.getElementById("navnP3").innerHTML = player3.id
-            document.getElementById("scoreP4").innerHTML = player4.score
-            document.getElementById("scoreP3").innerHTML = player3.score
-            document.getElementById("winsP4").innerHTML = player4.wins
-            document.getElementById("winsP3").innerHTML = player3.wins
+        if (!switchedSidesG1 && countPlayers == ""){
+            document.getElementById("navnP1").innerHTML = player1.id
+            document.getElementById("navnP2").innerHTML = player2.id
+            document.getElementById("scoreP1").innerHTML = player1.score
+            document.getElementById("scoreP2").innerHTML = player2.score
+            document.getElementById("winsP1").innerHTML = player1.wins
+            document.getElementById("winsP2").innerHTML = player2.wins
         }
-        else if (switchedSidesG2 && countPlayers == 4){
-            document.getElementById("navnP4").innerHTML = player3.id
-            document.getElementById("navnP3").innerHTML = player4.id
-            document.getElementById("scoreP4").innerHTML = player3.score
-            document.getElementById("scoreP3").innerHTML = player4.score
-            document.getElementById("winsP4").innerHTML = player3.wins
-            document.getElementById("winsP3").innerHTML = player4.wins
+        else if (switchedSidesG1 && countPlayers == ""){
+            document.getElementById("navnP2").innerHTML = player1.id
+            document.getElementById("navnP1").innerHTML = player2.id
+            document.getElementById("scoreP2").innerHTML = player1.score
+            document.getElementById("scoreP1").innerHTML = player2.score
+            document.getElementById("winsP2").innerHTML = player1.wins
+            document.getElementById("winsP1").innerHTML = player2.wins
+        }
+        if (window.location.pathname=="/html/game2.html"){
+            if (!switchedSidesG2 && countPlayers == ""){
+                document.getElementById("navnP4").innerHTML = player4.id
+                document.getElementById("navnP3").innerHTML = player3.id
+                document.getElementById("scoreP4").innerHTML = player4.score
+                document.getElementById("scoreP3").innerHTML = player3.score
+                document.getElementById("winsP4").innerHTML = player4.wins
+                document.getElementById("winsP3").innerHTML = player3.wins
+            }
+            else if (switchedSidesG2 && countPlayers == ""){
+                document.getElementById("navnP4").innerHTML = player3.id
+                document.getElementById("navnP3").innerHTML = player4.id
+                document.getElementById("scoreP4").innerHTML = player3.score
+                document.getElementById("scoreP3").innerHTML = player4.score
+                document.getElementById("winsP4").innerHTML = player3.wins
+                document.getElementById("winsP3").innerHTML = player4.wins
+            }
+            if (!switchedSidesG2 && countPlayers == 4){
+                document.getElementById("navnP4").innerHTML = player4.id
+                document.getElementById("navnP3").innerHTML = player3.id
+                document.getElementById("scoreP4").innerHTML = player4.score
+                document.getElementById("scoreP3").innerHTML = player3.score
+                document.getElementById("winsP4").innerHTML = player4.wins
+                document.getElementById("winsP3").innerHTML = player3.wins
+            }
+            else if (switchedSidesG2 && countPlayers == 4){
+                document.getElementById("navnP4").innerHTML = player3.id
+                document.getElementById("navnP3").innerHTML = player4.id
+                document.getElementById("scoreP4").innerHTML = player3.score
+                document.getElementById("scoreP3").innerHTML = player4.score
+                document.getElementById("winsP4").innerHTML = player3.wins
+                document.getElementById("winsP3").innerHTML = player4.wins
+            }
         }
     }
-    
-    
-    
 }
 if(window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"){
     updateScore()
@@ -460,26 +463,62 @@ function sendData(url, dataToSend){
     });
 }
 
+function deletePlayer(button){
+    switch (button.value) {
+        case "1":
+            player1.id = ""
+            player1.score = 0
+            player1.password = localStorage.getItem("password")
+            localStorage.setItem("player1", JSON.stringify(player1));
+            sendData("player1",JSON.parse(localStorage.getItem("player1")))
+            break;
+        case "2":
+            player2.id = ""
+            player2.score = 0
+            player2.password = localStorage.getItem("password")
+            localStorage.setItem("player2", JSON.stringify(player2));
+            sendData("player2",JSON.parse(localStorage.getItem("player2")))
+            break;
+        case "3":
+            player3.id = ""
+            player3.score = 0
+            player3.password = localStorage.getItem("password")
+            localStorage.setItem("player3", JSON.stringify(player3));
+            sendData("player3",JSON.parse(localStorage.getItem("player3")))
+            break;
+        case "4":
+            player4.id = ""
+            player4.score = 0
+            player4.password = localStorage.getItem("password")
+            localStorage.setItem("player4", JSON.stringify(player4));
+            sendData("player4",JSON.parse(localStorage.getItem("player4")))
+            break;
+    
+        default:
+            break;
+    }
+}
+
 if (window.location.pathname == "/html/index.html" || window.location.pathname == "/html/"){
-    player1.id = ""
-    player1.score = 0
-    player1.password = ""
-    player2.id = ""
-    player2.score = 0
-    player2.password = ""
-    player3.id = ""
-    player3.score = 0
-    player3.password = ""
-    player4.id = ""
-    player4.score = 0
-    player4.password = ""
-    localStorage.setItem("player1", JSON.stringify(player2))
-    localStorage.setItem("player2", JSON.stringify(player2))
-    localStorage.setItem("player3", JSON.stringify(player3))
-    localStorage.setItem("player4", JSON.stringify(player4))
+    // player1.id = ""
+    // player1.score = 0
+    // player1.password = ""
+    // player2.id = ""
+    // player2.score = 0
+    // player2.password = ""
+    // player3.id = ""
+    // player3.score = 0
+    // player3.password = ""
+    // player4.id = ""
+    // player4.score = 0
+    // player4.password = ""
+    // localStorage.setItem("player1", JSON.stringify(player2))
+    // localStorage.setItem("player2", JSON.stringify(player2))
+    // localStorage.setItem("player3", JSON.stringify(player3))
+    // localStorage.setItem("player4", JSON.stringify(player4))
     document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
     document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
 }
-if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"){
+if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
     setInterval(updateScore, 1000)
 }

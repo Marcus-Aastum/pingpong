@@ -17,11 +17,13 @@
             <input type="button" name="" value="Lag Spiller" onclick="createNewPlayer(document.getElementsByTagName('form')[0])" id="buttonIndex">
             <button onclick="tilSpill()" id="buttonIndex">Til spill</button>
             <h1>Spill 1:</h1>
-            <h3 id="playerN1">Spiller 1:</h3>
-            <h3 id="playerN2">Spiller 2:</h3>
+            <h3 id="playerN1" style="display: inline;">Spiller 1:</h3> <button value="1" onclick="deletePlayer(this)">Slett</button>
+            <br>
+            <h3 id="playerN2" style="display: inline;">Spiller 2:</h3> <button value="2" onclick="deletePlayer(this)">Slett</button>
             <h1>Spill 2:</h1>
-            <h3 id="playerN3">Spiller 3:</h3>
-            <h3 id="playerN4">Spiller 4:</h3>
+            <h3 id="playerN3" style="display: inline;">Spiller 3:</h3> <button value="3" onclick="deletePlayer(this)">Slett</button>
+            <br>
+            <h3 id="playerN4" style="display: inline;">Spiller 4:</h3> <button value="4" onclick="deletePlayer(this)">Slett</button>
         </div>
         <div>
             <form action="">
