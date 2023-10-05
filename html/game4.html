@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spill</title>
+    <link rel="stylesheet" href="../CSS/game4.css">
+</head>
+<body onkeydown="inputHandler(event.key)">
+    <p id="bord1" style="position: absolute; margin: auto; text-align: center; color: white; font-size: 3.5vh; padding: 0.5%; border-radius: 10px;">Bord 2</p>
+    <div class="buttonsDiv" id="buttonsDiv1">
+        <button onclick="window.location.href='index.html'" id="button1">Nytt spill</button>
+        <button id="button2" onclick="switchSides(2)">Bytt side</button>
+    </div>
+    <div class="player3">
+        <h1 id="navnP3">Spiller 3:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP3">0</h2>
+        <h1 class="score">Poeng:</h1>
+        <h2 class ="score" id="scoreP3">0</h2>
+    </div>
+    <div class="player4">
+        <h1 id="navnP4">Spiller 4:</h1>
+        <h1 class="wins">Sett: </h1>
+        <h2 class="wins" id="winsP4">0</h2>
+        <h1 class="score">Poeng:</h1>
+        <h2 class ="score" id="scoreP4">0</h2>
+    </div>
+    <div class="buttonsDiv" id="buttonsDiv2">
+        <button onclick="window.location.href='index.html'" id="button1">Nytt spill</button>
+        <button id="button2" onclick="switchSides(4)">Bytt side</button>
+    </div>
+    <script src="../JS/script4.js"></script>
+    <script src="../JS/redirect.js"></script>
+</body>
+</html>

@@ -390,72 +390,15 @@ function updateScore(countPlayers = ""){
     countWins = localStorage.getItem("countWins")
     player1 = JSON.parse(localStorage.getItem("player1"))
     console.log(player1.wins, countWins)
-    if (player1.wins >= countWins){
-        document.getElementById("navnP1").style.opacity = 0
-        document.getElementById("winsP1").innerHTML = player1.id
-        document.getElementById("winsP1").style.fontSize = "7vh"
-        document.getElementsByClassName("player2")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("scoreP1").remove()
-        document.getElementsByClassName("player1")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vant!"
-        sendData("player1", player1)
-        sendData("player2", player2)
-        setTimeout(function(){
-            player1.wins = 0
-            player1.score = 0
-            player2.wins = 0
-            player2.score = 0
-            localStorage.setItem("player1", JSON.stringify(player1))
-            localStorage.setItem("player2", JSON.stringify(player2))
-            sendData("player1", player1)
-            sendData("player2", player2)
-        }, 1500)
-        setTimeout(function(){
-            window.location.pathname=window.location.pathname;
-        }, 5000)
-        
-        updateScore()
-        
-       
-    }
-    else if (player2.wins >= countWins){
-        document.getElementById("navnP2").style.opacity = 0
-        document.getElementById("winsP2").innerHTML = player2.id
-        document.getElementById("winsP2").style.fontSize = "7vh"
-        document.getElementsByClassName("player1")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("scoreP2").remove()
-        document.getElementsByClassName("player2")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vant!"
-        sendData("player1", player1)
-        sendData("player2", player2)
-        setTimeout(function(){
-            player1.wins = 0
-            player1.score = 0
-            player2.wins = 0
-            player2.score = 0
-            localStorage.setItem("player1", JSON.stringify(player1))
-            localStorage.setItem("player2", JSON.stringify(player2))
-            sendData("player1", player1)
-            sendData("player2", player2)
-        }, 1500)
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player1", player1)
-        sendData("player2", player2)
-        updateScore()
-    }
-    else if (player3.wins >= countWins){
+    if (player3.wins >= countWins){
         document.getElementById("navnP3").style.opacity = 0
         document.getElementById("winsP3").innerHTML = player3.id
         document.getElementById("winsP3").style.fontSize = "7vh"
         document.getElementsByClassName("player4")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
+        document.getElementsByClassName("wins")[0].remove()
         document.getElementById("scoreP3").remove()
         document.getElementsByClassName("player3")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vant!"
+        document.getElementsByClassName("score")[0].innerHTML = "Vant!"
         sendData("player3", player3)
         sendData("player4", player4)
         setTimeout(function(){
@@ -474,18 +417,16 @@ function updateScore(countPlayers = ""){
         sendData("player3", player3)
         sendData("player4", player4)
         updateScore()
-        
-       
     }
     else if (player4.wins >= countWins){
         document.getElementById("navnP4").style.opacity = 0
         document.getElementById("winsP4").innerHTML = player4.id
         document.getElementById("winsP4").style.fontSize = "7vh"
         document.getElementsByClassName("player3")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
+        document.getElementsByClassName("wins")[0].remove()
         document.getElementById("scoreP4").remove()
         document.getElementsByClassName("player4")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vant!"
+        document.getElementsByClassName("score")[0].innerHTML = "Vant!"
         sendData("player3", player3)
         sendData("player4", player4)
         setTimeout(function(){
@@ -518,38 +459,18 @@ function updateScore(countPlayers = ""){
     else{
 
         if (!switchedSidesG1 && countPlayers == 2){
-            document.getElementById("navnP1").innerHTML = player1.id
-            document.getElementById("navnP2").innerHTML = player2.id
-            document.getElementById("scoreP1").innerHTML = player1.score
-            document.getElementById("scoreP2").innerHTML = player2.score
-            document.getElementById("winsP1").innerHTML = player1.wins
-            document.getElementById("winsP2").innerHTML = player2.wins
+            
         }
         else if (switchedSidesG1 && countPlayers == 2){
-            document.getElementById("navnP2").innerHTML = player1.id
-            document.getElementById("navnP1").innerHTML = player2.id
-            document.getElementById("scoreP2").innerHTML = player1.score
-            document.getElementById("scoreP1").innerHTML = player2.score
-            document.getElementById("winsP2").innerHTML = player1.wins
-            document.getElementById("winsP1").innerHTML = player2.wins
+            
         }
         if (!switchedSidesG1 && countPlayers == ""){
-            document.getElementById("navnP1").innerHTML = player1.id
-            document.getElementById("navnP2").innerHTML = player2.id
-            document.getElementById("scoreP1").innerHTML = player1.score
-            document.getElementById("scoreP2").innerHTML = player2.score
-            document.getElementById("winsP1").innerHTML = player1.wins
-            document.getElementById("winsP2").innerHTML = player2.wins
+            
         }
         else if (switchedSidesG1 && countPlayers == ""){
-            document.getElementById("navnP2").innerHTML = player1.id
-            document.getElementById("navnP1").innerHTML = player2.id
-            document.getElementById("scoreP2").innerHTML = player1.score
-            document.getElementById("scoreP1").innerHTML = player2.score
-            document.getElementById("winsP2").innerHTML = player1.wins
-            document.getElementById("winsP1").innerHTML = player2.wins
+            
         }
-        if (window.location.pathname=="/html/game2.html"){
+        if (window.location.pathname=="/html/game4.html"){
             if (!switchedSidesG2 && countPlayers == ""){
                 document.getElementById("navnP4").innerHTML = player4.id
                 document.getElementById("navnP3").innerHTML = player3.id
@@ -717,7 +638,7 @@ if (window.location.pathname == "/html/index.html" || window.location.pathname =
     document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
     document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
 }
-if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
+if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/game4.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
     setInterval(updateScore, 1000)
 }
 function deletePlayer(button){
