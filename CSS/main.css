@@ -36,14 +36,15 @@ body {
 
 h1 {
     text-align: center;
-    padding-top: 2%;
-    font-size: 5em;
+    padding-top: 0%;
+    padding-bottom: 2%;
+    font-size: 6vh;
 }
 
 h2 {
     text-align: center;
-    padding-top: 7%;
-    font-size: 2.5em;
+    padding-top: 0%;
+    font-size: 5vh;
 }
 
 .score {
