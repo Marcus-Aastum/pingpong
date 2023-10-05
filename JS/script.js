@@ -2,6 +2,15 @@ let player1 = JSON.parse(localStorage.getItem("player1"));
 let player2 = JSON.parse(localStorage.getItem("player2"));
 let player3 = JSON.parse(localStorage.getItem("player3"));
 let player4 = JSON.parse(localStorage.getItem("player4"));
+let player5 = JSON.parse(localStorage.getItem("player5"));
+let player6 = JSON.parse(localStorage.getItem("player6"));
+
+player5 = {}
+player6 = {}
+player5.id = ""
+player6.id = ""
+localStorage.setItem("player5", JSON.stringify(player5))
+localStorage.setItem("player6", JSON.stringify(player6))
 let switchedSidesG1 = false;
 let switchedSidesG2 = false;
 let countPoints = localStorage.getItem("countPoints");
@@ -179,15 +188,92 @@ function addPoint(playerIndex){
         default:
             break;
     }
-
+    if (player1.wins >= countWins){
+        document.getElementsByClassName("player2")[0].remove()
+        document.getElementsByClassName("wins")[0].remove()
+        document.getElementById("winsP1").remove()
+        document.getElementById("scoreP1").remove()
+        document.getElementsByClassName("player1")[0].style.width = "100%"
+        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player1", player1)
+        sendData("player2", player2)
+        updateScore()
+        
+       
+    }
+    else if (player2.wins >= countWins){
+        document.getElementsByClassName("player1")[0].remove()
+        document.getElementsByClassName("wins")[0].remove()
+        document.getElementById("winsP2").remove()
+        document.getElementById("scoreP2").remove()
+        document.getElementsByClassName("player2")[0].style.width = "100%"
+        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
+        player1.wins = 0
+        player1.score = 0
+        player2.wins = 0
+        player2.score = 0
+        localStorage.setItem("player1", JSON.stringify(player1))
+        localStorage.setItem("player2", JSON.stringify(player2))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player1", player1)
+        sendData("player2", player2)
+        updateScore()
+    }
+    else if (player3.wins >= countWins){
+        document.getElementsByClassName("player4")[0].remove()
+        document.getElementsByClassName("wins")[4].remove()
+        document.getElementById("winsP3").remove()
+        document.getElementById("scoreP3").remove()
+        document.getElementsByClassName("player3")[0].style.width = "100%"
+        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player3", player3)
+        sendData("player4", player4)
+        updateScore()
+        
+       
+    }
+    else if (player4.wins >= countWins){
+        document.getElementsByClassName("player3")[0].remove()
+        document.getElementsByClassName("wins")[4].remove()
+        document.getElementById("winsP4").remove()
+        document.getElementById("scoreP4").remove()
+        document.getElementsByClassName("player4")[0].style.width = "100%"
+        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
+        player3.wins = 0
+        player3.score = 0
+        player4.wins = 0
+        player4.score = 0
+        localStorage.setItem("player3", JSON.stringify(player3))
+        localStorage.setItem("player4", JSON.stringify(player4))
+        setTimeout(function(){
+         window.location.pathname=window.location.pathname;
+        }, 5000)
+        sendData("player3", player3)
+        sendData("player4", player4)
+        updateScore()
+    }
+    updateScore()
 }
-console.log(player1, player2)
-// addPoint(0)
-// addPoint(0)
-// addPoint(0)
-// addPoint(0)
-// addPoint(1)
-console.log(player1, player2)
 function updateScore(countPlayers = ""){
     fetch('https://pingpong.aastum.no/api/send/player1', {
     method: 'GET',
@@ -331,90 +417,7 @@ function updateScore(countPlayers = ""){
     .catch(error => {
         console.error('Error:', error);
     });
-    if (player1.wins >= countWins){
-        document.getElementsByClassName("player2")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("winsP1").remove()
-        document.getElementById("scoreP1").remove()
-        document.getElementsByClassName("player1")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
-        player1.wins = 0
-        player1.score = 0
-        player2.wins = 0
-        player2.score = 0
-        localStorage.setItem("player1", JSON.stringify(player1))
-        localStorage.setItem("player2", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player1", player1)
-        sendData("player2", player2)
-        updateScore()
-        
-       
-    }
-    else if (player2.wins >= countWins){
-        document.getElementsByClassName("player1")[0].remove()
-        document.getElementsByClassName("wins")[0].remove()
-        document.getElementById("winsP2").remove()
-        document.getElementById("scoreP2").remove()
-        document.getElementsByClassName("player2")[0].style.width = "100%"
-        document.getElementsByClassName("score")[0].innerHTML = "Vinner!"
-        player1.wins = 0
-        player1.score = 0
-        player2.wins = 0
-        player2.score = 0
-        localStorage.setItem("player1", JSON.stringify(player1))
-        localStorage.setItem("player2", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player1", player1)
-        sendData("player2", player2)
-        updateScore()
-    }
-    else if (player3.wins >= countWins){
-        document.getElementsByClassName("player4")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
-        document.getElementById("winsP3").remove()
-        document.getElementById("scoreP3").remove()
-        document.getElementsByClassName("player3")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
-        player3.wins = 0
-        player3.score = 0
-        player4.wins = 0
-        player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player1))
-        localStorage.setItem("player4", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player3", player3)
-        sendData("player4", player4)
-        updateScore()
-        
-       
-    }
-    else if (player4.wins >= countWins){
-        document.getElementsByClassName("player3")[0].remove()
-        document.getElementsByClassName("wins")[4].remove()
-        document.getElementById("winsP4").remove()
-        document.getElementById("scoreP4").remove()
-        document.getElementsByClassName("player4")[0].style.width = "100%"
-        document.getElementsByClassName("score")[4].innerHTML = "Vinner!"
-        player3.wins = 0
-        player3.score = 0
-        player4.wins = 0
-        player4.score = 0
-        localStorage.setItem("player3", JSON.stringify(player1))
-        localStorage.setItem("player4", JSON.stringify(player2))
-        setTimeout(function(){
-         window.location.pathname=window.location.pathname;
-        }, 5000)
-        sendData("player3", player3)
-        sendData("player4", player4)
-        updateScore()
-    }
+    
     if(window.location.pathname == "/html/" || window.location.pathname == "/html/index.html"){
         document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id;
         document.getElementById("playerN2").innerHTML = "Spiller 2: " + player2.id;
@@ -622,22 +625,6 @@ function sendData(url, dataToSend){
 }
 
 if (window.location.pathname == "/html/index.html" || window.location.pathname == "/html/"){
-    // player1.id = ""
-    // player1.score = 0
-    // player1.password = ""
-    // player2.id = ""
-    // player2.score = 0
-    // player2.password = ""
-    // player3.id = ""
-    // player3.score = 0
-    // player3.password = ""
-    // player4.id = ""
-    // player4.score = 0
-    // player4.password = ""
-    // localStorage.setItem("player1", JSON.stringify(player2))
-    // localStorage.setItem("player2", JSON.stringify(player2))
-    // localStorage.setItem("player3", JSON.stringify(player3))
-    // localStorage.setItem("player4", JSON.stringify(player4))
     document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
     document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
 }
@@ -693,3 +680,12 @@ function deletePlayer(button){
             break;
     }
 }
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    document.getElementsByClassName("player1")[0].style.width = "48%"
+    document.getElementsByClassName("player2")[0].style.width = "48%"
+    document.getElementsByClassName("player3")[0].style.width = "48%"
+    document.getElementsByClassName("player4")[0].style.width = "48%"
+    document.getElementById("bord1").remove()
+    document.getElementById("bord2").remove()
+  }
