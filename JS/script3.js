@@ -616,6 +616,24 @@ if (window.location.pathname == "/html/index.html" || window.location.pathname =
 if (window.location.pathname == "/html/game1.html" || window.location.pathname == "/html/game2.html"|| window.location.pathname == "/html/game3.html"|| window.location.pathname == "/html/"|| window.location.pathname == "/html/index.html"){
     setInterval(updateScore, 1000)
 }
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    // true for mobile device
+    document.getElementsByClassName("player1")[0].style.height = "45%"
+    document.getElementsByClassName("player2")[0].style.height = "45%"
+    document.getElementsByClassName("player3")[0].style.height = "45%"
+    document.getElementsByClassName("player4")[0].style.height = "45%"
+    document.getElementsByClassName("player5")[0].style.height = "45%"
+    document.getElementsByClassName("player6")[0].style.height = "45%"
+    document.getElementsByClassName("player1")[0].style.width = "48%"
+    document.getElementsByClassName("player2")[0].style.width = "48%"
+    document.getElementsByClassName("player3")[0].style.width = "48%"
+    document.getElementsByClassName("player4")[0].style.width = "48%"
+    document.getElementsByClassName("player5")[0].style.width = "48%"
+    document.getElementsByClassName("player6")[0].style.width = "48%"
+    document.getElementById("bord1").remove()
+    document.getElementById("bord2").remove()
+    document.getElementById("bord3").remove()
+  }
 function deletePlayer(button){
     switch (button.value) {
         case "1":
