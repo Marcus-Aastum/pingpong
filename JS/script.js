@@ -111,6 +111,8 @@ function setPoints() {
     
 }
 function addPoint(playerIndex){
+    countPoints = localStorage.getItem("countPoints")
+    countWins = localStorage.getItem("countWins")
     switch (playerIndex) {
         case 1:
             player1.score ++;
@@ -421,6 +423,50 @@ function updateScore(countPlayers = ""){
     .catch(error => {
         console.error('Error:', error);
     });
+    fetch('https://pingpong.aastum.no/api/send/countPoints', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        countPoints = data
+        localStorage.setItem("countPoints", JSON.stringify(countPoints))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    fetch('https://pingpong.aastum.no/api/send/countWins', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse the JSON response
+        } else {
+            console.error('Failed to fetch data');
+        }
+    })
+    .then(data => {
+        // console.log('Data received from the server:', data.id, data.score);
+        // Use the data in your web application
+        countWins = data
+        localStorage.setItem("countWins", JSON.stringify(countPoints))
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
     
     if(window.location.pathname == "/html/" || window.location.pathname == "/html/index.html"){
         document.getElementById("playerN1").innerHTML = "Spiller 1: " + player1.id;
@@ -429,6 +475,8 @@ function updateScore(countPlayers = ""){
         document.getElementById("playerN4").innerHTML = "Spiller 4: " + player4.id;
         document.getElementById("playerN5").innerHTML = "Spiller 5: " + player5.id;
         document.getElementById("playerN6").innerHTML = "Spiller 6: " + player6.id;
+        document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
+        document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
     }
     else{
 
