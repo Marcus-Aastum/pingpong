@@ -105,6 +105,10 @@ function setPoints() {
     console.log(countPoints, countWins)
     document.getElementById('pointsShow').innerHTML = 'Poeng satt til: ' + countPoints
     document.getElementById('winsShow').innerHTML = 'Sett satt til: ' + countWins
+
+    sendData("countPoints", countPoints)
+    sendData("countWins", countWins)
+    
 }
 function addPoint(playerIndex){
     switch (playerIndex) {
