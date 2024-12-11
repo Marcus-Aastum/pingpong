@@ -149,8 +149,8 @@ app.get('/api/send/countWins', (req, res) => {
 });
 
 // Start the server and listen on your local IP address
-app.listen(port, '192.168.10.182', () => {
+app.listen(port, '127.0.0.1', () => {
     // const localIP = require('ip').address(); // Requires the 'ip' package
-    const localIP = "192.168.10.182"; // Requires the 'ip' package
+    const localIP = "127.0.0.1"; // Requires the 'ip' package
     console.log(`Server is running on http://${localIP}:${port}`);
 });

@@ -1,5 +1,5 @@
 function redirect(){
-    fetch('https://pingpong.aastum.no/api/send/player1', {
+    fetch('/api/send/player1', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ function redirect(){
             console.error('Error:', error);
         });
     
-        fetch('https://pingpong.aastum.no/api/send/player2', {
+        fetch('/api/send/player2', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function redirect(){
             console.error('Error:', error);
         });
     
-        fetch('https://pingpong.aastum.no/api/send/player3', {
+        fetch('/api/send/player3', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ function redirect(){
             console.error('Error:', error);
         });
     
-        fetch('https://pingpong.aastum.no/api/send/player4', {
+        fetch('/api/send/player4', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function redirect(){
         .catch(error => {
             console.error('Error:', error);
         });
-        fetch('https://pingpong.aastum.no/api/send/player5', {
+        fetch('/api/send/player5', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ function redirect(){
         console.error('Error:', error);
     });
 
-    fetch('https://pingpong.aastum.no/api/send/player6', {
+    fetch('/api/send/player6', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
